@@ -15,18 +15,30 @@ public class App extends Application {
 
     private static Scene scene;
 
+   /*
+   public void init(){
+       //inicializamos el objeto robot
+   }*/
+    
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("VistaInicio"), 640, 480);
+        Parent vista = loadFXML("VistaInicio");
+        scene = new Scene(vista, 640, 480);
         stage.setScene(scene);
         stage.show();
     }
+    
+    /**
+     * Cambia el contenedor raiz de la escena por el pasado como parametro
+     * @param root : contenedor raiz
+     * @throws IOException 
+     */
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    public static void setRoot(Parent root) {
+        scene.setRoot(root);
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }

@@ -4,10 +4,13 @@
  */
 package com.mycompany.proyectomarte;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -27,18 +30,25 @@ public class VistaInicioController implements Initializable {
 
     @FXML
     private void explorarSuperficie(MouseEvent event) {
+        System.out.println("En explorar superficie");
     }
 
     @FXML
     private void planificarExploracion(MouseEvent event) {
+        System.out.println("En planificar exploracion");
     }
 
     @FXML
-    private void verReporte(MouseEvent event) {
+    private void verReporte(MouseEvent event) throws IOException {
+        System.out.println("En ver reporte");
+        Parent root = App.loadFXML("VistaReporte");
+        App.setRoot(root);
     }
 
     @FXML
     private void salir(MouseEvent event) {
+    //se termina la aplicacion
+        Platform.exit();
     }
     
 }
