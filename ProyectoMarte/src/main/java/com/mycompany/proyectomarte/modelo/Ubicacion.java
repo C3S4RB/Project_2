@@ -33,6 +33,7 @@ public class Ubicacion {
         this.longitud = longitud;
     }
     
+    //Calcular distancia
     //d =  ( (x2 - x1)^2 + (y2 - y1)^2 )^1/2
     public double calcularDistancia(Ubicacion u) {
         return Math.sqrt(Math.pow(u.latitud - latitud, 2) + Math.pow(u.longitud - longitud, 2));

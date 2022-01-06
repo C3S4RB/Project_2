@@ -38,9 +38,6 @@ public class CraterData {
                 Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[2]), Double.valueOf(c[3]));
                 Crater crater = new Crater(c[0], c[1], ubicacion, Double.valueOf(c[4]));
                 crateres.add(crater);
-                //if (c[1].equals(mapa.getCodigo())) {                   
-                //}
-
             }
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los crateres");
