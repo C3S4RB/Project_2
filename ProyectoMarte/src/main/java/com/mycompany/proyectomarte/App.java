@@ -12,14 +12,14 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    private static Nasa nasa;
     private static Scene scene;
 
-   /*
+   
    public void init(){
-       //inicializamos el objeto robot
-   }*/
-    
+       nasa = new Nasa();
+   }
+   
     @Override
     public void start(Stage stage) throws IOException {
         Parent vista = loadFXML("VistaInicio");
@@ -45,6 +45,10 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+    
+    public static Nasa getNasa(){
+        return nasa;
     }
 
 }
