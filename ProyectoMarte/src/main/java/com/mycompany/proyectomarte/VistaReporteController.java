@@ -6,7 +6,9 @@ package com.mycompany.proyectomarte;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -14,6 +16,13 @@ import javafx.fxml.Initializable;
  * @author Ramses
  */
 public class VistaReporteController implements Initializable {
+
+    @FXML
+    private TextField txtFechaFin;
+    @FXML
+    private TextField txtFechaInicio;
+    @FXML
+    private TextField txtMineral;
 
     /**
      * Initializes the controller class.

@@ -50,9 +50,9 @@
                     </rowConstraints>
                      <children>
                         <TextField />
-                        <TextField GridPane.rowIndex="1" />
-                        <TextField />
-                        <TextField GridPane.rowIndex="2" />
+                        <TextField fx:id="txtFechaFin" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtFechaInicio" />
+                        <TextField fx:id="txtMineral" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
@@ -62,18 +62,18 @@
             <Insets top="20.0" />
          </VBox.margin>
       </HBox>
-      <TableView prefHeight="215.0" prefWidth="526.0">
+      <TableView prefHeight="155.0" prefWidth="497.0">
         <columns>
+          <TableColumn minWidth="0.0" prefWidth="117.0" text="Nombre Crater" />
+            <TableColumn minWidth="0.0" prefWidth="178.0" text="Minerales Econtrados" />
           <TableColumn prefWidth="135.0" text="Fecha exploracion" />
-          <TableColumn prefWidth="116.0" text="Nombre Crater" />
-            <TableColumn prefWidth="179.0" text="Minerales Econtrados" />
         </columns>
          <VBox.margin>
-            <Insets top="30.0" />
+            <Insets bottom="30.0" left="120.0" right="30.0" top="30.0" />
          </VBox.margin>
-         <padding>
-            <Insets left="120.0" right="50.0" />
-         </padding>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </children>
 </VBox>
