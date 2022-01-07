@@ -4,6 +4,10 @@
  */
 package com.mycompany.proyectomarte.modelo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Ramses
@@ -44,6 +48,29 @@ public class Crater {
     public double getRadiocrater() {
         return radiocrater;
     }
+    public static List<Crater> leerCrateres(){
+        List<Crater> crateres = new ArrayList(Arrays.asList(
+        /*  aqui van los crateres
+            new Causa("Operacion Matias",
+                    "causa1.png",
+                    "Matias tiene una patita rota que necesta operacion",
+                    1000),
+            new Causa("Operacion gemelos ",
+                    "causa2.png",
+                    "Ayudenmos a conseguir el dinero para operar gemelos ",
+                    4000),
+            new Causa("Casa Josefa",
+                    "causa3.png",
+                    "Dinero para la comida y vacunas de josefa",
+                    500),
+            new Causa("No dejes e ver Michu",
+                    "causa4.jpeg",
+                    "Dinero para trata el ojito de Michu",
+                    1000)*/
+        ));
+        return crateres;
+    }
+    
     
     //metodo toString
     @Override

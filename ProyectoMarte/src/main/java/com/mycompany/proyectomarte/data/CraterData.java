@@ -19,7 +19,7 @@ import java.util.List;
 public class CraterData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "/crateres_info.txt";
-
+/*
     //en vez de Zona es un solo mapa
     /*
     public static List<Crater> cargarCraters(Mapa mapa) {
@@ -45,6 +45,10 @@ public class CraterData {
             ex.printStackTrace();
         }
         return crateres;
+<<<<<<< HEAD
     }
 */
+=======
+    }*/
+>>>>>>> 0bf1d484a20490d5d03abc6ccda0a305df48cb31
 }
