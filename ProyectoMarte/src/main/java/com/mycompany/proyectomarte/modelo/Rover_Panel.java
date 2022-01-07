@@ -10,8 +10,8 @@ package com.mycompany.proyectomarte.modelo;
  */
 public class Rover_Panel extends Rover {
 
-    public Rover_Panel(String string, double parseDouble, double parseDouble0, String string0) {
-        super(string,parseDouble,parseDouble0,string0);
+    public Rover_Panel(String string, Ubicacion u, String string0) {
+        super(string,u,string0);
     }
 
     @Override

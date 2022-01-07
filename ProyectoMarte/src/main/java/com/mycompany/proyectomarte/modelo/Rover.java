@@ -16,7 +16,7 @@ public abstract class Rover implements RoverI {
     private Double grados;
     private String nombreR;
     private String tipo;
-        
+       private Ubicacion u;
     
     public Double getPos_x() {
         return pos_x;
@@ -59,9 +59,17 @@ public abstract class Rover implements RoverI {
     }
    
 
-    public Rover(String nombreR, Double pos_x, Double pos_y, String tipo) {
+   /* public Rover(String nombreR, Double pos_x, Double pos_y, String tipo) {
         this.pos_x = pos_x;
         this.pos_y = pos_y;
+        this.tipo = tipo;
+        this.nombreR = nombreR;
+
+    }*/
+    public Rover(String nombreR,Ubicacion u, String tipo) {
+        //this.pos_x = pos_x;
+        //this.pos_y = pos_y;
+        this.u=u;
         this.tipo = tipo;
         this.nombreR = nombreR;
 

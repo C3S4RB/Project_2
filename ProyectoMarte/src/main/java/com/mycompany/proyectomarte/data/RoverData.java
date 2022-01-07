@@ -7,6 +7,7 @@ package com.mycompany.proyectomarte.data;
 import com.mycompany.proyectomarte.modelo.Rover;
 import com.mycompany.proyectomarte.modelo.Rover_Eolico;
 import com.mycompany.proyectomarte.modelo.Rover_Panel;
+import com.mycompany.proyectomarte.modelo.Ubicacion;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -31,10 +32,12 @@ public class RoverData {
                 String[] p = linea.split(",");
 
                 if ((p[3]).equals("solar")) {
-                    Rover rover = new Rover_Panel(p[0], Double.parseDouble(p[1]), Double.parseDouble(p[2]), p[3]);
+                    
+                    
+                    Rover rover = new Rover_Panel(p[0],new Ubicacion (Double.parseDouble(p[1]), Double.parseDouble(p[2])), p[3]);
                     rovers.add(rover);
                 } else {
-                    Rover rover = new Rover_Eolico(p[0], Double.parseDouble(p[1]), Double.parseDouble(p[2]), p[3]);
+                    Rover rover = new Rover_Eolico(p[0],new Ubicacion ( Double.parseDouble(p[1]), Double.parseDouble(p[2])), p[3]);
                     rovers.add(rover);
                 }
             }

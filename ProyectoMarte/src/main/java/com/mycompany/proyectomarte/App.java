@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -23,6 +24,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent vista = loadFXML("VistaInicio");
+        stage.getIcons().add(new Image(" marteIcon.png "));
+         stage.setTitle("Proyecto Marte");
         scene = new Scene(vista, 640, 480);
         stage.setScene(scene);
         stage.show();

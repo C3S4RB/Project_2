@@ -9,8 +9,8 @@ package com.mycompany.proyectomarte.modelo;
  * @author isaac
  */
 public class Rover_Eolico  extends Rover {
-     public Rover_Eolico(String string, double parseDouble, double parseDouble0, String string0) {
-        super(string,parseDouble,parseDouble0,string0);
+     public Rover_Eolico(String string, Ubicacion u, String string0) {
+        super(string,u,string0);
 }
 
     @Override
