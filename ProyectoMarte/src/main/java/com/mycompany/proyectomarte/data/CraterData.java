@@ -21,6 +21,7 @@ public class CraterData {
     public static String ruta = CONSTANTES.ARCHIVOS + "/crateres_info.txt";
 
     //en vez de Zona es un solo mapa
+    /*
     public static List<Crater> cargarCraters(Mapa mapa) {
         List<Crater> crateres = new ArrayList<>();
 
@@ -45,4 +46,5 @@ public class CraterData {
         }
         return crateres;
     }
+*/
 }
