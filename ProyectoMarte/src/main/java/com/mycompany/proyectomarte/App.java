@@ -16,7 +16,7 @@ public class App extends Application {
     private static Scene scene;
 
    
-   public void init(){
+   public void init() throws IOException{
        nasa = new Nasa();
    }
    

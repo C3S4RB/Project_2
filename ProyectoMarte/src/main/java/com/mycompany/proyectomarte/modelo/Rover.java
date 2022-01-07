@@ -4,24 +4,19 @@
  */
 package com.mycompany.proyectomarte.modelo;
 
-import java.util.List;
-
 /**
  *
  * @author isaac
  */
-///Fakta implementa Rover1
 
-public abstract class Rover  {
-
-
-
+public abstract class Rover implements RoverI {
 
     private Double pos_x;
     private Double pos_y;
     private Double grados;
     private String nombreR;
     private String tipo;
+        
     
     public Double getPos_x() {
         return pos_x;

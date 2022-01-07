@@ -1,0 +1,8 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+#panelExplorar{
+        -fx-background-image:url("marte1.jpg");
+        -fx-background-size:100% 100%;
+    }
