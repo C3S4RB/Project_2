@@ -10,4 +10,8 @@ package com.mycompany.proyectomarte.modelo;
  */
 public class Rover_Eolico  extends Rover {
     
+    public Rover_Eolico(String nombreR, Double pos_x, Double pos_y, String tipo) {
+        super(nombreR, pos_x, pos_y, tipo);
+    }
+    
 }

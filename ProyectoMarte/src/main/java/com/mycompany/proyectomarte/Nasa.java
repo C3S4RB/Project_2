@@ -4,7 +4,9 @@
  */
 package com.mycompany.proyectomarte;
 
+import com.mycompany.proyectomarte.data.RoverData;
 import com.mycompany.proyectomarte.modelo.Crater;
+import com.mycompany.proyectomarte.modelo.Rover;
 import java.util.List;
 
 public class Nasa {
@@ -12,7 +14,7 @@ public class Nasa {
     List<Rover> rovers;
     public Nasa(){
         crateres = Crater.leerCrateres();
-        rovers = Rover.leerRovers();
+        rovers = RoverData.leerRovers();
     }
     
     public void guardarCrater(Crater c){

@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -24,6 +26,7 @@ public class VistaPlanificarController implements Initializable {
     private GridPane gridRuta;
     @FXML
     private TextField txtCrateres;
+    
 
     /**
      * Initializes the controller class.
@@ -45,5 +48,9 @@ public class VistaPlanificarController implements Initializable {
             contador += 1;
         }*/
     }    
+
+    @FXML
+    private void mostarRuta(MouseEvent event) {
+    }
     
 }
