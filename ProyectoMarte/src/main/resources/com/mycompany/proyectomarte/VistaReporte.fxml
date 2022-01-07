@@ -76,9 +76,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <HBox alignment="CENTER" prefHeight="94.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="94.0" prefWidth="600.0" spacing="15.0">
          <children>
             <Button mnemonicParsing="false" onContextMenuRequested="#buscar" text="Buscar" />
+            <Button mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
          </children>
       </HBox>
    </children>

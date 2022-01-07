@@ -19,10 +19,8 @@ import java.util.List;
 public class CraterData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "/crateres_info.txt";
-/*
-    //en vez de Zona es un solo mapa
-    /*
-    public static List<Crater> cargarCraters(Mapa mapa) {
+
+    public static List<Crater> cargarCrateres() {
         List<Crater> crateres = new ArrayList<>();
 
         try (BufferedReader bf
@@ -34,6 +32,7 @@ public class CraterData {
                 //int idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater
                 //Contructor Ubicacion tiene 
                 //double latitud, double longitud
+                
                 String[] c = linea.split(",");
                 //c1 es el nombre del crater
                 Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[2]), Double.valueOf(c[3]));
@@ -45,10 +44,5 @@ public class CraterData {
             ex.printStackTrace();
         }
         return crateres;
-<<<<<<< HEAD
     }
-*/
-=======
-    }*/
->>>>>>> 0bf1d484a20490d5d03abc6ccda0a305df48cb31
 }
