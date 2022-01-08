@@ -67,7 +67,7 @@ public class VistaPlanificarController implements Initializable {
     private void mostarRuta(MouseEvent event) {
         String ingresados = txtCrateres.getText();
         if (!(ingresados.isEmpty())) {
-            List<Crater> crateresCumplen = ValidacionesValidarCrateres(ingresados);
+            //List<Crater> crateresCumplen = Validaciones.ValidarCrateres(ingresados);
 
         }
         

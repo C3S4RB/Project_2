@@ -4,28 +4,24 @@
  */
 package com.mycompany.proyectomarte.modelo;
 
-import java.util.List;
-
 /**
  *
  * @author isaac
  */
-///Fakta implementa Rover1
 
-public abstract class Rover  {
-
-
-
+public abstract class Rover implements RoverI {
 
     private Ubicacion ubicacion;
     private Double grados;
     private String nombreR;
-    private String tipo;
-   
+    
+    
+    
     public Ubicacion getUbicacion() {
         return ubicacion;
-    }
 
+    }    
+    
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
@@ -46,18 +42,8 @@ public abstract class Rover  {
         this.nombreR = nombreR;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-   
-
-    public Rover(String nombreR,Ubicacion ubicacion, String tipo) {
-        this.ubicacion = ubicacion;
-        this.tipo = tipo;
+    public Rover(String nombreR,Ubicacion ubicacion) {
+        this.ubicacion =ubicacion;
         this.nombreR = nombreR;
 
     }

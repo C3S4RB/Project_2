@@ -8,6 +8,7 @@ import com.mycompany.proyectomarte.data.CraterData;
 import com.mycompany.proyectomarte.data.RoverData;
 import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Rover;
+import java.io.IOException;
 import java.util.List;
 
 public class Nasa {
@@ -15,7 +16,7 @@ public class Nasa {
     List<Rover> rovers;
     
     
-    public Nasa(){
+    public Nasa() throws IOException{
         crateres = CraterData.cargarCrateres();
         rovers = RoverData.leerRovers();
     }

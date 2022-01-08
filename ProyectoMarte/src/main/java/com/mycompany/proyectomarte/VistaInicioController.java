@@ -29,8 +29,10 @@ public class VistaInicioController implements Initializable {
     }    
 
     @FXML
-    private void explorarSuperficie(MouseEvent event) {
+    private void explorarSuperficie(MouseEvent event) throws IOException {
         System.out.println("En explorar superficie");
+         Parent root = App.loadFXML("VistaExplorar");
+        App.setRoot(root);
     }
 
     @FXML
