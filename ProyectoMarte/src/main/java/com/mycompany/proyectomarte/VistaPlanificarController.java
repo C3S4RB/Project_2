@@ -61,40 +61,14 @@ public class VistaPlanificarController implements Initializable {
         }*/
     }    
 
-    public static List<Crater> verificacionCrateres(String ingresados){
-        
-        List<Crater> crateres = CraterData.cargarCrateres();
-        List<String> nCrateres = new ArrayList<>();
-        String[] nombresCrateres = ingresados.split(",");
-        List<String> noCumplen = new ArrayList<>();
-        List<Crater> cumplen = new ArrayList<>();
-        for (Crater c : crateres) {
-            nCrateres.add(c.getNombrecrater().toUpperCase());
-        }
-        for (String elemento : nombresCrateres) {
-                if (nCrateres.contains(elemento.strip().toUpperCase())) {
-                    int indice = nCrateres.indexOf(elemento.strip().toUpperCase()); 
-                    cumplen.add(crateres.get(indice));
-                } else {
-                    noCumplen.add(elemento);  
-                }
-            }
-        if(!(noCumplen.isEmpty())){
-            Alert alert2 = new Alert(AlertType.ERROR);
-            alert2.setContentText(noCumplen+" no son crateres");
-            alert2.showAndWait();
-        }else{
-            return cumplen;
-        }
-        return null;
-    }
+
     
     @FXML
     private void mostarRuta(MouseEvent event) {
         String ingresados = txtCrateres.getText();
         if (!(ingresados.isEmpty())) {
-            List<Crater> crateresCumplen = verificacionCrateres(ingresados);
-            ubicacionRover = 
+            List<Crater> crateresCumplen = ValidacionesValidarCrateres(ingresados);
+
         }
         
     }
