@@ -17,26 +17,17 @@ public abstract class Rover  {
 
 
 
-    private Double pos_x;
-    private Double pos_y;
+    private Ubicacion ubicacion;
     private Double grados;
     private String nombreR;
     private String tipo;
-    
-    public Double getPos_x() {
-        return pos_x;
+   
+    public Ubicacion getUbicacion() {
+        return ubicacion;
     }
 
-    public void setPos_x(Double pos_x) {
-        this.pos_x = pos_x;
-    }
-
-    public Double getPos_y() {
-        return pos_y;
-    }
-
-    public void setPos_y(Double pos_y) {
-        this.pos_y = pos_y;
+    public void setUbicacion(Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Double getGrados() {
@@ -64,9 +55,8 @@ public abstract class Rover  {
     }
    
 
-    public Rover(String nombreR, Double pos_x, Double pos_y, String tipo) {
-        this.pos_x = pos_x;
-        this.pos_y = pos_y;
+    public Rover(String nombreR,Ubicacion ubicacion, String tipo) {
+        this.ubicacion = ubicacion;
         this.tipo = tipo;
         this.nombreR = nombreR;
 
