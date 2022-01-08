@@ -16,25 +16,38 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class Validaciones {
 
-    public static boolean validarCrateres(String ingresados) {
+    public static List<Crater> validarCrateres(String ingresados) {
 
         List<Crater> crateres = CraterData.cargarCrateres();
-        ArrayList<String> nCrateres = new ArrayList<>();
+        List<String> nCrateres = new ArrayList<>();
         String[] nombresCrateres = ingresados.split(",");
+        List<String> noCumplen = new ArrayList<>();
+        List<Crater> cumplen = new ArrayList<>();
         for (Crater c : crateres) {
             nCrateres.add(c.getNombrecrater().toUpperCase());
         }
         for (String elemento : nombresCrateres) {
             if (nCrateres.contains(elemento.strip().toUpperCase())) {
+                int indice = nCrateres.indexOf(elemento.strip().toUpperCase());
+                cumplen.add(crateres.get(indice));
             } else {
-                Alert alert2 = new Alert(AlertType.ERROR);
-                alert2.setContentText(elemento + " no es un crater");
-                alert2.showAndWait();
+                noCumplen.add(elemento);
             }
         }
-
-        return true;
+        if (!(noCumplen.isEmpty())) {            
+            lanzarAlerta(noCumplen + " no son crateres");            
+        } else {
+            return cumplen;
+        }
+        return null;
     }
+
+    //Validamos que el mineral exista
+    /*
+    public static boolean validarMineral(String m){
+        //List<
+        return 
+    }*/
 
     //Metodo para validad que la fecha sea valida
     public static boolean validarFecha(String texto) {
@@ -47,6 +60,6 @@ public class Validaciones {
         //Mostramos un mensaje con el contenido:
         alert.setContentText(mensaje);
         //Muestra la alerta
-        alert.showAndWait();     
+        alert.showAndWait();
     }
 }

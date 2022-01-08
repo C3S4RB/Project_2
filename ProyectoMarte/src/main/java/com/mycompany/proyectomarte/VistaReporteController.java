@@ -74,45 +74,42 @@ public class VistaReporteController implements Initializable {
 
             String fechaF = txtFechaFin.getText();
             String[] dateF = fechaF.split("/");
-
-            //Si alguno de los textos estan vacios muestra una alerta
-            if (fechaI.isEmpty()) {
-                Validaciones.lanzarAlerta("El contenido de ficha final no puede estar vacio.");
-            } else if (fechaF.isEmpty()) {
-                Validaciones.lanzarAlerta("El contenido de ficha final no puede estar vacio.");
-            } else if (mineral.isEmpty()) {
-                Validaciones.lanzarAlerta("El contenido del mineral no puede estar vacio.");
-            } else if (fechaI.isEmpty() || fechaF.isEmpty() || mineral.isEmpty()) {
-                Validaciones.lanzarAlerta("Los contenidos no pueden estar vacios.");
-
-                //Una vez que estan ingresados los 3 parametros validamos que estos sean correctos
+            
+            //Validamos que los parametros esten llenos 
+            //Si alguno de los textos estan vacios muestra una alerta            
+            if (fechaI.isEmpty() || fechaF.isEmpty() || mineral.isEmpty()) {
+                if (fechaI.isEmpty() && fechaF.isEmpty() && mineral.isEmpty()) {
+                    Validaciones.lanzarAlerta("Los contenidos no pueden estar vacios.");
+                } else if (fechaI.isEmpty()) {
+                    Validaciones.lanzarAlerta("El contenido de ficha final no puede estar vacio.");
+                } else if (fechaF.isEmpty()) {
+                    Validaciones.lanzarAlerta("El contenido de ficha final no puede estar vacio.");
+                } else if (mineral.isEmpty()) {
+                    Validaciones.lanzarAlerta("El contenido del mineral no puede estar vacio.");
+                }
+                
+                //Una vez que estan ingresados los 3 parametros 
+                //Validamos que estos sean correctos
                 //Si una de las fechas NO tiene el formato correcto
                 //usamos el metodo validarFecha el cual se encuentra en la clase Validaciones            
-            } else if ((validarFecha(fechaI) == false) || (validarFecha(fechaF) == false)) {
+            } else if (!validarFecha(fechaI) || !validarFecha(fechaF)) {
                 //si ambas fechas tienen mal el formato
-                if ((validarFecha(fechaI) == false) && (validarFecha(fechaF) == false)) {
+                if (!validarFecha(fechaI) && !validarFecha(fechaF)) {
                     Validaciones.lanzarAlerta("Formato de la fecha inicio y fecha fin son incorrecto.");
-                } else if ((validarFecha(fechaI) == false)) {
+                } else if (!validarFecha(fechaI)) {
                     Validaciones.lanzarAlerta("Formato de la fecha inicio es incorrecto.");
-                } else if ((validarFecha(fechaF) == false)) {
+                } else if (!validarFecha(fechaF)) {
                     Validaciones.lanzarAlerta("Formato de la fecha fin es incorrecto.");
                 }
-                /*
-            //si el nombre del mineral no es valido
+         
+            //Validamos que el nombre del mineral no es valido
             //usamos el metodo 
-                
-                
-                
-                
-            } else if(){ 
-                //Alerta de tipo error
-                Alert alert = new Alert(AlertType.ERROR);
-                //Mostramos un mensaje con el contenido:
-                alert.setContentText("Nombre del mineral incorrecto");
-                //Muestra la alerta
-                alert.showAndWait();
-                 */
-                //si los textos no estan vacios y estan todos estan correctos
+            /*
+            } else if(!validarMineral(mineral)){                 
+                Validaciones.lanzarAlerta("Nombre del mineral incorrecto");
+            */
+            
+            //si los textos no estan vacios y esta todo correcto
             } else {
                 LocalDate fechaInicio = LocalDate.of(Integer.valueOf(dateI[0]), Integer.valueOf(dateI[1]), Integer.valueOf(dateI[3]));
                 LocalDate fechaFin = LocalDate.of(Integer.valueOf(dateF[0]), Integer.valueOf(dateF[1]), Integer.valueOf(dateF[3]));
