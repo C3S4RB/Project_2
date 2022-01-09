@@ -45,10 +45,10 @@ public class VistaExplorarController implements Initializable {
     @FXML
     private void recibirComando(ActionEvent event) {
        
-        String comando= comandoTxt.getText().replace(" ","").toLowerCase(); 
+        String comando= comandoTxt.getText().replace(" ","").toLowerCase()+"\n"; 
         
         switch (comando){
-            case "avanzar":
+            case "avanzar"+"\n":
                 //rover.avanzar();
                   comdIngresado.appendText(comando);
                 break;
