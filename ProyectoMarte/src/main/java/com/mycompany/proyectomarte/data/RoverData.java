@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class RoverData {
 
-    public static String ruta = CONSTANTES.ARCHIVOS + "/rovers-1.txt";
+    public static String ruta = CONSTANTES.ARCHIVOS + "/rovers.txt";
 
     public static List<Rover> leerRovers() {
         List<Rover> rovers = new ArrayList<>();
@@ -34,10 +34,10 @@ public class RoverData {
                 if ((p[3]).equals("solar")) {
                     
                     
-                    Rover rover = new Rover_Panel(p[0],new Ubicacion (Double.parseDouble(p[1]), Double.parseDouble(p[2])), p[3]);
+                    Rover rover = new Rover_Panel(p[0],new Ubicacion (Double.parseDouble(p[1]), Double.parseDouble(p[2])));
                     rovers.add(rover);
                 } else {
-                    Rover rover = new Rover_Eolico(p[0],new Ubicacion ( Double.parseDouble(p[1]), Double.parseDouble(p[2])), p[3]);
+                    Rover rover = new Rover_Eolico(p[0],new Ubicacion ( Double.parseDouble(p[1]), Double.parseDouble(p[2])));
                     rovers.add(rover);
                 }
             }

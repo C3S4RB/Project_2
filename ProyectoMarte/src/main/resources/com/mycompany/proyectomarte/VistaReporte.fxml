@@ -50,20 +50,11 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField fx:id="txtMineral" GridPane.rowIndex="2" />
-                        <TextField fx:id="txtFechaFin" GridPane.rowIndex="1" />
-                        <TextField fx:id="txtFechaIncio" />
+                        <TextField fx:id="txtMineral" promptText="Inserte nombre del mineral" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtFechaFin" promptText="dia/mes/año" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtFechaIncio" promptText="dia/mes/año" />
                      </children>
                   </GridPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="89.0" prefWidth="148.0">
-               <children>
-                  <Label text="Formato: dia/mes/año">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
                </children>
             </VBox>
          </children>
