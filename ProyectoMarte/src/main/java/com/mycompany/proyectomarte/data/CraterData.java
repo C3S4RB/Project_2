@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class CraterData {
 
-    public static String ruta = CONSTANTES.ARCHIVOS + "/crateres_info.txt";
+    public static String ruta = CONSTANTES.ARCHIVOS + "crateres_info.txt";
 
     public static List<Crater> cargarCrateres() {
         List<Crater> crateres = new ArrayList<>();

@@ -84,6 +84,9 @@ public abstract class Rover implements RoverI {
     
     }
 
-   
+    @Override
+    public String toString() {
+        return "Rover{" + "nombre=" + nombreR + ", ubicacion=" + ubicacion + '}';
+    }
 
 }

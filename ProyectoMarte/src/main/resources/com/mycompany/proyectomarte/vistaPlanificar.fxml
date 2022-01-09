@@ -53,5 +53,10 @@
             <Insets />
          </opaqueInsets>
       </GridPane>
+      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
+         </children>
+      </HBox>
    </children>
 </VBox>

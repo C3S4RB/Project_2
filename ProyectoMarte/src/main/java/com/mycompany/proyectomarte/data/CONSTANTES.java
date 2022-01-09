@@ -10,5 +10,5 @@ package com.mycompany.proyectomarte.data;
  * @author rocio
  */
 public abstract class CONSTANTES {
-    public static final String ARCHIVOS = "data";
+    public static final String ARCHIVOS = "datos/";
 }

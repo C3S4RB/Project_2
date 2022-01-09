@@ -26,7 +26,7 @@ public class Crater {
     //radio del crater
     private double radiocrater;
     
-    private List<Mineral> minerales;
+    private List<Mineral> minerales = new ArrayList<>();
     
     public Crater(String idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater){
         this.idcrater = idcrater;

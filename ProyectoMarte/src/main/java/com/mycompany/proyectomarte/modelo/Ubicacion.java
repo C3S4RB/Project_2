@@ -35,9 +35,10 @@ public class Ubicacion {
     
     //Calcular distancia
     //d =  ( (x2 - x1)^2 + (y2 - y1)^2 )^1/2
-    public double calcularDistancia(Ubicacion u) {
-        return Math.sqrt(Math.pow(u.latitud - latitud, 2) + Math.pow(u.longitud - longitud, 2));
+    public static double calcularDistancia(Ubicacion u1,Ubicacion u2) {
+        return Math.sqrt(Math.pow((u2.latitud - u1.latitud), 2) + Math.pow((u2.longitud - u1.longitud), 2));
     }
+
 
     @Override
     public String toString() {
