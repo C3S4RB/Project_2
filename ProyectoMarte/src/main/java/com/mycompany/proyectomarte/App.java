@@ -27,6 +27,10 @@ public class App extends Application {
        //stage.getIcons().add(new Image("/com.mycompany.proyectomarte/marteIcon.png"));
        //stage.setIcon();
          stage.setTitle("Proyecto Marte");
+
+        //stage.getIcons().add(new Image("marteIcon.png"));
+        stage.setTitle("Proyecto Marte");
+
         scene = new Scene(vista, 640, 480);
         stage.setScene(scene);
         stage.show();

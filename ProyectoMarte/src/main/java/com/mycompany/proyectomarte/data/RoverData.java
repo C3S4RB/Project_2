@@ -21,7 +21,10 @@ import java.util.List;
  */
 public class RoverData {
 
+
     public static String ruta = CONSTANTES.ARCHIVOS + "rovers.txt";
+
+
 
     public static List<Rover> leerRovers() {
         List<Rover> rovers = new ArrayList<>();
