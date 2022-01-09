@@ -24,7 +24,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent vista = loadFXML("VistaInicio");
-        stage.getIcons().add(new Image(" marteIcon.png "));
+       //stage.getIcons().add(new Image("/com.mycompany.proyectomarte/marteIcon.png"));
+       //stage.setIcon();
          stage.setTitle("Proyecto Marte");
         scene = new Scene(vista, 640, 480);
         stage.setScene(scene);

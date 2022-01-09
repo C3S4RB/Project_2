@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyectomarte.data;
 
+import static com.mycompany.proyectomarte.data.RoverData.ruta;
+import com.mycompany.proyectomarte.modelo.Mineral;
 import com.mycompany.proyectomarte.modelo.Rover;
 import com.mycompany.proyectomarte.modelo.Rover_Eolico;
 import com.mycompany.proyectomarte.modelo.Rover_Panel;
@@ -12,41 +14,34 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  *
- * @author isaac
+ * @author cebor
  */
-public class RoverData {
+///Hice esta h*-$# pa hacer colision dentro de cada crater 
+public class MineralData {
 
-    public static String ruta = CONSTANTES.ARCHIVOS + "rovers.txt";
+    public static String ruta = CONSTANTES.ARCHIVOS + "minerales.txt";
 
-    public static List<Rover> leerRovers() {
-        List<Rover> rovers = new ArrayList<>();
+    public static List<Mineral> leerMineral() {
+        List<Mineral> minerales = new ArrayList<>();
+
         try (BufferedReader bf
                 = new BufferedReader(new FileReader(ruta))) {
             String linea;
             while ((linea = bf.readLine()) != null) {
-                String[] p = linea.split(",");
-
-                if ((p[3]).equals("solar")) {
-                    
-                    
-                    Rover rover = new Rover_Panel(p[0],new Ubicacion (Double.parseDouble(p[1]), Double.parseDouble(p[2])));
-                    rovers.add(rover);
-                } else {
-                    Rover rover = new Rover_Eolico(p[0],new Ubicacion ( Double.parseDouble(p[1]), Double.parseDouble(p[2])));
-                    rovers.add(rover);
-                }
+                Mineral mineral = new Mineral(linea);
+                minerales.add(mineral);
             }
 
         } catch (IOException ex) {
             System.out.println("no se pudo cargar la informacion de los agentes");
             ex.printStackTrace();
         }
-        return rovers;
+
+        return minerales;
 
     }
 

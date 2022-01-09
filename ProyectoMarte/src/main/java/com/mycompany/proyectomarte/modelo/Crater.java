@@ -26,6 +26,8 @@ public class Crater {
     //radio del crater
     private double radiocrater;
     
+    private List<Mineral> minerales;
+    
     public Crater(String idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater){
         this.idcrater = idcrater;
         this.nombrecrater = nombrecrater;
@@ -48,7 +50,9 @@ public class Crater {
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
-
+     public void asignarMineral( Mineral mineral) {
+     minerales.add(mineral);
+    }
     public double getRadiocrater() {
         return radiocrater;
     }
