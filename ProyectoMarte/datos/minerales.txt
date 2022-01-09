@@ -1,4 +1,9 @@
-Aluminio
-Cobre 
-Plata
-
+silicio
+hierro
+aluminio
+calcio
+titanio
+fósforo
+magnesio
+sodio
+potasio
