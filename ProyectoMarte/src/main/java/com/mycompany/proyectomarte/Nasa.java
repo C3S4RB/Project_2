@@ -48,5 +48,8 @@ public class Nasa {
     public List<Rover> getRovers() {
         return rovers;
     }
+    public static void main(String[] args){
+        System.out.println("casc");
+    }
 
 }
