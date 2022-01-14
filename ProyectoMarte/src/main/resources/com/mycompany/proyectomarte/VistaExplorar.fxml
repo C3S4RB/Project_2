@@ -6,14 +6,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="989.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
    <children>
       <HBox prefHeight="552.0" prefWidth="915.0">
          <children>
-            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="1080.0" prefWidth="720.0" stylesheets="@vistaexplorar.css">
+            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="502.0" prefWidth="845.0" stylesheets="@vistaexplorar.css">
                <children>
-                  <Pane id="panelRover" fx:id="paneRover" layoutX="14.0" layoutY="20.0" prefHeight="59.0" prefWidth="84.0" stylesheets="@vistaexplorar_1.css" />
+                  <Pane id="panelRover" fx:id="paneRover" layoutY="7.0" prefHeight="59.0" prefWidth="84.0" stylesheets="@vistaexplorar_1.css" />
+                  <Rectangle id="panelRoverr" fx:id="paneRoverr" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="59.0" layoutX="412.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
                </children></Pane>
             <VBox prefHeight="406.0" prefWidth="187.0">
                <children>
