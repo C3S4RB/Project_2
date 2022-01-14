@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
+   <children>
+      <HBox prefHeight="552.0" prefWidth="915.0">
+         <children>
+            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="1080.0" prefWidth="720.0" stylesheets="@vistaexplorar.css">
+               <children>
+                  <Pane id="panelRover" fx:id="paneRover" layoutX="14.0" layoutY="20.0" prefHeight="59.0" prefWidth="84.0" stylesheets="@vistaexplorar_1.css" />
+               </children></Pane>
+            <VBox prefHeight="406.0" prefWidth="187.0">
+               <children>
+                  <Label text="Escoger Rover:" />
+                  <ComboBox fx:id="cbRover" onAction="#cargarRover" prefWidth="150.0" />
+                  <Label prefHeight="18.0" prefWidth="116.0" text="Ingrese Comandos:" />
+                  <TextField fx:id="comandoTxt" onAction="#recibirComando" />
+                  <Label prefHeight="18.0" prefWidth="142.0" text="Comandos Ingresados:" />
+                  <TextField fx:id="comdIngresado" alignment="TOP_LEFT" prefHeight="450.0" prefWidth="187.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
