@@ -78,34 +78,28 @@ public abstract class Rover implements RoverI {
 
     @Override
     public void avanzar() {
-    double ux=rectan.getLayoutX();
-    
-   // double uy   =rectan.getLayoutY();
-    
-    
-            
-            
-    } 
+        double ux = rectan.getLayoutX();
+
+        // double uy   =rectan.getLayoutY();
+    }
+
     @Override
-    public void girar(){
-    
-    
+    public void girar() {
+
     }
     
     
-    public void dirigirse(double x,double y){
-    
-    
+    public void dirigirse(double x, double y) {
+
     }
-    /*
-    public String sensar(){
+    
+
+    //public void String sensar() {
         
-    if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
-    
-    }
-    */
-    
-    
+        //if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
+
+    //}
+
     @Override
     public String toString() {
         return "Rover{" + "nombre=" + nombreR + ", ubicacion=" + ubicacion + '}';

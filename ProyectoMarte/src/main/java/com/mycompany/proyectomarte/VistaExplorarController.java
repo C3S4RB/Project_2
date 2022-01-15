@@ -26,7 +26,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-
 /**
  * FXML Controller class
  *
@@ -57,9 +56,6 @@ public class VistaExplorarController implements Initializable {
         List<Rover> rovers = RoverData.leerRovers();
 
         cbRover.getItems().addAll(rovers);
-<<<<<<< HEAD
-    }
-=======
         cbRover.getValue().setRectan(paneRoverr);
 
         for (Crater crater : Nasa.getCrateres()) {
@@ -70,74 +66,58 @@ public class VistaExplorarController implements Initializable {
 
             Label l = new Label(crater.getNombrecrater());
             StackPane st = new StackPane();
-            double d =2*c.getRadius();
-            if (panelExplorar.getPrefHeight()-d>crater.getUbicacion().getLongitud() && panelExplorar.getPrefWidth()-d>crater.getUbicacion().getLatitud()){
-            st.getChildren().addAll(c, l);
-            panelExplorar.getChildren().addAll(st);
-            st.setLayoutX(crater.getUbicacion().getLatitud());
-            st.setLayoutY(crater.getUbicacion().getLongitud());
-            crater.setCircle(c);
+            double d = 2 * c.getRadius();
+            if (panelExplorar.getPrefHeight() - d > crater.getUbicacion().getLongitud() && panelExplorar.getPrefWidth() - d > crater.getUbicacion().getLatitud()) {
+                st.getChildren().addAll(c, l);
+                panelExplorar.getChildren().addAll(st);
+                st.setLayoutX(crater.getUbicacion().getLatitud());
+                st.setLayoutY(crater.getUbicacion().getLongitud());
+                crater.setCircle(c);
             }
         }
-    }//vpaneRover.getPrefHeight
->>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
+    }
 
     @FXML
     private void recibirComando(ActionEvent event) {
 
         String comando = comandoTxt.getText().replace(" ", "").toLowerCase();
-<<<<<<< HEAD
 
-=======
-        
-        if (comando){}
-        
-        
->>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
+        //if (comando) {
+        //}
         switch (comando) {
             case "avanzar":
                 //rover.avanzar();
                 comdIngresado.appendText(comando);
-<<<<<<< HEAD
                 break;
             case "girar":
-
                 comdIngresado.appendText(comando);
                 break;
             case "dirigirse":
-
                 comdIngresado.appendText(comando);
                 break;
             case "sensar":
                 comdIngresado.appendText(comando);
-=======
                 cbRover.getValue().avanzar();
-                
-                
-                
+
                 break;
             case "girar;90":
-
                 comdIngresado.appendText(comando);
                 cbRover.getValue().girar();
                 break;
             case "dirigirse;12,5":
 
                 comdIngresado.appendText(comando);
-                 cbRover.getValue().dirigirse();
+                cbRover.getValue().dirigirse();
                 break;
+                /*
             case "sensar":
                 comdIngresado.appendText(comando);
-                 cbRover.getValue().sensar();
->>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
+                cbRover.getValue().sensar();
                 break;
+                */
             case "cargar":
-
                 comdIngresado.appendText(comando);
-<<<<<<< HEAD
-=======
-                 cbRover.getValue().cargar();
->>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
+                cbRover.getValue().cargar();
                 break;
             default:
                 //alerta
@@ -148,7 +128,6 @@ public class VistaExplorarController implements Initializable {
 
     @FXML
     private void cargarRover(ActionEvent event) {
-<<<<<<< HEAD
 
         Rover roverChosed = cbRover.getValue();
 
@@ -165,11 +144,7 @@ public class VistaExplorarController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-=======
-
         Rover roverChosed = cbRover.getValue();
-
->>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
     }
 
 }
