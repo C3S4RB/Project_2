@@ -35,6 +35,8 @@ public class Mineral {
             System.out.println(m.getNombreMineral());
         }
     }
+    
+    
 
     @Override
     public String toString() {
