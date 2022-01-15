@@ -11,8 +11,7 @@ package com.mycompany.proyectomarte.modelo;
 public interface RoverI {
     void avanzar();///mueve el robot de su posición hacia delante.
     
-    
-    
+        
     void girar();///gira el robot g grados hacia la derecha
     
     

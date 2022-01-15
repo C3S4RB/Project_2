@@ -12,6 +12,7 @@ public class Rover_Panel extends Rover {
 
     public Rover_Panel(String string, Ubicacion u) {
         super(string,u);
+        super.setUrlImagen("wally.png");
     }
 
 

@@ -9,8 +9,10 @@ package com.mycompany.proyectomarte.modelo;
  * @author isaac
  */
 public class Rover_Eolico  extends Rover {
+    
      public Rover_Eolico(String string, Ubicacion u) {
         super(string,u);
+        super.setUrlImagen("eva.png");
 }
 
     

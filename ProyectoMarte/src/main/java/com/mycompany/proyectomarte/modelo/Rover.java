@@ -20,7 +20,13 @@ public abstract class Rover implements RoverI {
     private double radioRover = 50;
     private ImageView imgv;
     private static double delta = 50;
-    private String urlImagen = "rover.jpg";
+    private String urlImagen;
+
+    public Rover(String nombreR, Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
+        this.nombreR = nombreR;
+
+    }
 
     public double getRadioRover() {
         return radioRover;
@@ -73,12 +79,6 @@ public abstract class Rover implements RoverI {
         this.nombreR = nombreR;
     }
 
-    public Rover(String nombreR, Ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
-        this.nombreR = nombreR;
-
-    }
-
     @Override
     public void avanzar() {
         System.out.println("1");
@@ -102,13 +102,11 @@ public abstract class Rover implements RoverI {
 
     }
 
-    /*
-    public String sensar(){
-        
-    if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
-    
+    public void sensar() {
+
+        //if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
     }
-     */
+
     public String getUrlImagen() {
         return urlImagen;
     }
