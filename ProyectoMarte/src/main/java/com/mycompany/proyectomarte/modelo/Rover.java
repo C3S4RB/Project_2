@@ -5,6 +5,7 @@
 package com.mycompany.proyectomarte.modelo;
 
 import java.util.List;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -17,18 +18,20 @@ public abstract class Rover implements RoverI {
     private Double grados;
     private String nombreR;
     private double radioRover = 50;
-    private Rectangle rectan;
+    private ImageView imgv;
+    private static double delta = 50;
+    private String urlImagen = "rover.jpg";
 
     public double getRadioRover() {
         return radioRover;
     }
 
-    public Rectangle getRectan() {
-        return rectan;
+    public ImageView getImgv() {
+        return imgv;
     }
 
-    public void setRectan(Rectangle rectan) {
-        this.rectan = rectan;
+    public void setImgv(ImageView imgv) {
+        this.imgv = imgv;
     }
 
     public void setRadioRover(double radioRover) {
@@ -78,27 +81,41 @@ public abstract class Rover implements RoverI {
 
     @Override
     public void avanzar() {
-        double ux = rectan.getLayoutX();
+        System.out.println("1");
+        double x = imgv.getLayoutX();
+        System.out.println("2");
+        double y = imgv.getLayoutY();
+        System.out.println("3");
+        double nUbicacion = x + delta;
+        System.out.println("4");
+        imgv.setLayoutX(nUbicacion);
+        System.out.println("5");
 
         // double uy   =rectan.getLayoutY();
     }
 
-    @Override
-    public void girar() {
+    public void girar(double n) {
 
     }
-    
-    
+
     public void dirigirse(double x, double y) {
 
     }
-    
 
-    //public void String sensar() {
+    /*
+    public String sensar(){
         
-        //if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
+    if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
+    
+    }
+     */
+    public String getUrlImagen() {
+        return urlImagen;
+    }
 
-    //}
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
 
     @Override
     public String toString() {

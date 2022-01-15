@@ -137,7 +137,7 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
                             Registro re = new Registro(rf.getFecha(), rf.getCrater(), rf.getMineralesEncontrados());                         
                             //registros.add(re);                           
                         }
-                         */
+                        */
                         tableView.setItems(registros);
 
                         //Validaciones.lanzarAlerta("Todo bien :v");
@@ -167,10 +167,4 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
         }
     }
 
-    /*
-    @Override
-    public int compareTo(Reporte u1) {
-        
-        return u1.compareTo(u2);
-    }*/
 }

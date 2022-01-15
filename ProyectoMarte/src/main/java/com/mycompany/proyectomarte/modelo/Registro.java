@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Ramses
  */
-public class Registro {
+public class Registro implements Comparable<Registro>{
     private LocalDate fecha;
     private String crater;
     private List<String> mineralesEncontrados;
@@ -38,4 +38,11 @@ public class Registro {
     public String toString() {
         return "Registro{" + "fecha=" + fecha + ", crater=" + crater + ", minerales encontrados=" + mineralesEncontrados+ '}';
     }
+    
+    @Override
+    public int compareTo(Registro r) {
+        int compf = fecha.compareTo(r.fecha);
+        return (compf != 0) ? compf : Integer.compare(mineralesEncontrados.size(), r.mineralesEncontrados.size());
+    }    
+    
 }

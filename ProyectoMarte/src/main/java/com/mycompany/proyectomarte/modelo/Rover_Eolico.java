@@ -13,10 +13,7 @@ public class Rover_Eolico  extends Rover {
         super(string,u);
 }
 
-    @Override
-    public void avanzar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public void girar() {

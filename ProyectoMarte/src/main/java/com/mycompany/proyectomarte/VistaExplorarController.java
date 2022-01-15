@@ -9,6 +9,7 @@ import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Rover;
 import com.mycompany.proyectomarte.modelo.Validaciones;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,12 +20,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 /**
  * FXML Controller class
@@ -38,13 +40,9 @@ public class VistaExplorarController implements Initializable {
     @FXML
     private TextField comdIngresado;
     @FXML
-    private Pane paneRover;
-    @FXML
     private TextField comandoTxt;
     @FXML
     private ComboBox<Rover> cbRover;
-    @FXML
-    private Rectangle paneRoverr;
 
     /**
      * Initializes the controller class.
@@ -52,11 +50,10 @@ public class VistaExplorarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
+        System.out.println("entra");
         List<Rover> rovers = RoverData.leerRovers();
 
         cbRover.getItems().addAll(rovers);
-        cbRover.getValue().setRectan(paneRoverr);
 
         for (Crater crater : Nasa.getCrateres()) {
 
@@ -74,63 +71,84 @@ public class VistaExplorarController implements Initializable {
                 st.setLayoutY(crater.getUbicacion().getLongitud());
                 crater.setCircle(c);
             }
+
         }
-    }
+
+    }//vpaneRover.getPrefHeight
 
     @FXML
     private void recibirComando(ActionEvent event) {
 
         String comando = comandoTxt.getText().replace(" ", "").toLowerCase();
 
-        //if (comando) {
-        //}
-        switch (comando) {
+        String[] comand = comando.split(":");
+
+        switch (comand[0]) {
             case "avanzar":
-                //rover.avanzar();
-                comdIngresado.appendText(comando);
-                break;
-            case "girar":
-                comdIngresado.appendText(comando);
-                break;
-            case "dirigirse":
-                comdIngresado.appendText(comando);
-                break;
-            case "sensar":
-                comdIngresado.appendText(comando);
+                System.out.println("metodoAvanzr");
+                System.out.println(cbRover.getValue());
                 cbRover.getValue().avanzar();
-
-                break;
-            case "girar;90":
-                comdIngresado.appendText(comando);
-                cbRover.getValue().girar();
-                break;
-            case "dirigirse;12,5":
+                System.out.println("caer");
+                comdIngresado.nextWord();
 
                 comdIngresado.appendText(comando);
-                cbRover.getValue().dirigirse();
                 break;
-                /*
+            case "girar:90":
+
+                comdIngresado.appendText(comando);
+                //comand[1]
+                cbRover.getValue().girar(Double.parseDouble(comand[1]));
+
+                break;
+            case "dirigirse:15;125":
+                String[] coman = comand[1].split(";");
+                //x=coman[0]
+                //y=coman[1]
+                cbRover.getValue().dirigirse(Double.parseDouble(coman[0]), Double.parseDouble(coman[1]));
+                comdIngresado.appendText(comando);
+                break;
             case "sensar":
                 comdIngresado.appendText(comando);
                 cbRover.getValue().sensar();
                 break;
-                */
             case "cargar":
+
                 comdIngresado.appendText(comando);
                 cbRover.getValue().cargar();
                 break;
             default:
                 //alerta
                 Validaciones.lanzarAlerta("No existe comando");
+                break;
         }
 
     }
 
     @FXML
     private void cargarRover(ActionEvent event) {
+        //  
+        // roverChosed.setRectan(recta);
 
-        Rover roverChosed = cbRover.getValue();
+        ImageView rover = null;
+        try {
+            System.out.println("entra2");
 
+            InputStream input = App.class.getResource(cbRover.getValue().getUrlImagen()).openStream();
+            Image img = new Image(input, 100, 100, true, true);
+            //   Image img = new Image("rover.jpg", 100, 100, true, true);
+
+            rover = new ImageView(img);
+            rover = new ImageView(img);
+
+        } catch (NullPointerException | IOException ex) {
+            //        ex.printStackTrace();
+            System.out.println("entr3");
+            rover = new ImageView();
+
+        }
+        System.out.println("4");
+        panelExplorar.getChildren().add(rover);
+        cbRover.getValue().setImgv(rover);
     }
 
     @FXML
@@ -144,7 +162,6 @@ public class VistaExplorarController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Rover roverChosed = cbRover.getValue();
     }
 
 }

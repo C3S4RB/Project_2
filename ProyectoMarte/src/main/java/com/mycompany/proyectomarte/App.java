@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javafx.scene.image.Image;
 
@@ -72,9 +73,12 @@ public class App extends Application {
         //System.out.println("Registros: "+registros);
         //LocalDate fecha = LocalDate.of(2021,01,12);
         //System.out.println(fecha);        
-        //System.out.println(LocalDate.now());
+        System.out.println(LocalDate.now());
        
         List<Registro> r = RegistroData.leerRegistros();
+        System.out.println(r);
+        
+        Collections.sort(r);
         System.out.println(r);
     }
 

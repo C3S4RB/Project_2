@@ -8,21 +8,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 
-<<<<<<< HEAD
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
-=======
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="989.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
->>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
    <children>
       <HBox prefHeight="552.0" prefWidth="915.0">
          <children>
-            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="502.0" prefWidth="845.0" stylesheets="@vistaexplorar.css">
-               <children>
-                  <Pane id="panelRover" fx:id="paneRover" layoutY="7.0" prefHeight="59.0" prefWidth="84.0" stylesheets="@vistaexplorar_1.css" />
-                  <Rectangle id="panelRoverr" fx:id="paneRoverr" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="59.0" layoutX="412.0" layoutY="217.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
-               </children></Pane>
+            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="502.0" prefWidth="845.0" stylesheets="@vistaexplorar.css" />
             <VBox prefHeight="406.0" prefWidth="187.0">
                <children>
                   <Label text="Escoger Rover:" />
@@ -35,16 +26,16 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="21.0" prefWidth="900.0">
+      <VBox alignment="CENTER" prefHeight="31.0" prefWidth="980.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <VBox.margin>
+         <padding>
             <Insets top="10.0" />
-         </VBox.margin>
-      </HBox>
+         </padding>
+      </VBox>
    </children>
 </VBox>
