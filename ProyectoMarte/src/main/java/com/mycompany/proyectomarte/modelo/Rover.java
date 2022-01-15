@@ -5,6 +5,7 @@
 package com.mycompany.proyectomarte.modelo;
 
 import java.util.List;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
@@ -16,9 +17,18 @@ public abstract class Rover implements RoverI {
     private Double grados;
     private String nombreR;
     private double radioRover = 50;
+    private Rectangle rectan;
 
     public double getRadioRover() {
         return radioRover;
+    }
+
+    public Rectangle getRectan() {
+        return rectan;
+    }
+
+    public void setRectan(Rectangle rectan) {
+        this.rectan = rectan;
     }
 
     public void setRadioRover(double radioRover) {
@@ -68,10 +78,14 @@ public abstract class Rover implements RoverI {
 
     @Override
     public void avanzar() {
-        if (ubicacion.getLatitud() == 5  ) {
+    double ux=rectan.getLayoutX();
+    
+   // double uy   =rectan.getLayoutY();
+    
+    
             
             
-    } }
+    } 
     @Override
     public void girar(){
     
@@ -83,7 +97,15 @@ public abstract class Rover implements RoverI {
     
     
     }
-
+    /*
+    public String sensar(){
+        
+    if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
+    
+    }
+    */
+    
+    
     @Override
     public String toString() {
         return "Rover{" + "nombre=" + nombreR + ", ubicacion=" + ubicacion + '}';

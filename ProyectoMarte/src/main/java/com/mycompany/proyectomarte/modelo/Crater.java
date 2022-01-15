@@ -7,6 +7,7 @@ package com.mycompany.proyectomarte.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.shape.Circle;
 
 /**
  *
@@ -23,6 +24,15 @@ public class Crater {
     //radio del crater
     private double radiocrater;
     
+    private Circle circle;
+
+    public Circle getCircle() {
+        return circle;
+    }
+
+    public void setCircle(Circle circle) {
+        this.circle = circle;
+    }
     private List<Mineral> minerales = new ArrayList<>();
 
     public Crater(String idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater) {

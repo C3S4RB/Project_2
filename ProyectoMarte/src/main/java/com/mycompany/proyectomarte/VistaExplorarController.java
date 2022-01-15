@@ -5,6 +5,7 @@
 package com.mycompany.proyectomarte;
 
 import com.mycompany.proyectomarte.data.RoverData;
+import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Rover;
 import com.mycompany.proyectomarte.modelo.Validaciones;
 import java.io.IOException;
@@ -16,9 +17,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+
 
 /**
  * FXML Controller class
@@ -37,6 +44,8 @@ public class VistaExplorarController implements Initializable {
     private TextField comandoTxt;
     @FXML
     private ComboBox<Rover> cbRover;
+    @FXML
+    private Rectangle paneRoverr;
 
     /**
      * Initializes the controller class.
@@ -48,17 +57,48 @@ public class VistaExplorarController implements Initializable {
         List<Rover> rovers = RoverData.leerRovers();
 
         cbRover.getItems().addAll(rovers);
+<<<<<<< HEAD
     }
+=======
+        cbRover.getValue().setRectan(paneRoverr);
+
+        for (Crater crater : Nasa.getCrateres()) {
+
+            Circle c = new Circle(crater.getRadiocrater(), Color.RED);
+            c.setStroke(Color.DARKRED);
+            c.setFill(Color.TRANSPARENT);
+
+            Label l = new Label(crater.getNombrecrater());
+            StackPane st = new StackPane();
+            double d =2*c.getRadius();
+            if (panelExplorar.getPrefHeight()-d>crater.getUbicacion().getLongitud() && panelExplorar.getPrefWidth()-d>crater.getUbicacion().getLatitud()){
+            st.getChildren().addAll(c, l);
+            panelExplorar.getChildren().addAll(st);
+            st.setLayoutX(crater.getUbicacion().getLatitud());
+            st.setLayoutY(crater.getUbicacion().getLongitud());
+            crater.setCircle(c);
+            }
+        }
+    }//vpaneRover.getPrefHeight
+>>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
 
     @FXML
     private void recibirComando(ActionEvent event) {
 
         String comando = comandoTxt.getText().replace(" ", "").toLowerCase();
+<<<<<<< HEAD
 
+=======
+        
+        if (comando){}
+        
+        
+>>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
         switch (comando) {
             case "avanzar":
                 //rover.avanzar();
                 comdIngresado.appendText(comando);
+<<<<<<< HEAD
                 break;
             case "girar":
 
@@ -70,10 +110,34 @@ public class VistaExplorarController implements Initializable {
                 break;
             case "sensar":
                 comdIngresado.appendText(comando);
+=======
+                cbRover.getValue().avanzar();
+                
+                
+                
+                break;
+            case "girar;90":
+
+                comdIngresado.appendText(comando);
+                cbRover.getValue().girar();
+                break;
+            case "dirigirse;12,5":
+
+                comdIngresado.appendText(comando);
+                 cbRover.getValue().dirigirse();
+                break;
+            case "sensar":
+                comdIngresado.appendText(comando);
+                 cbRover.getValue().sensar();
+>>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
                 break;
             case "cargar":
 
                 comdIngresado.appendText(comando);
+<<<<<<< HEAD
+=======
+                 cbRover.getValue().cargar();
+>>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
                 break;
             default:
                 //alerta
@@ -84,6 +148,7 @@ public class VistaExplorarController implements Initializable {
 
     @FXML
     private void cargarRover(ActionEvent event) {
+<<<<<<< HEAD
 
         Rover roverChosed = cbRover.getValue();
 
@@ -100,6 +165,11 @@ public class VistaExplorarController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+=======
+
+        Rover roverChosed = cbRover.getValue();
+
+>>>>>>> 63acbcc05e7a809d72907b595eca82a3d314aeaf
     }
 
 }

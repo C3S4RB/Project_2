@@ -8,7 +8,7 @@
         
         -fx-background-image:url("rover.jpg");
         -fx-background-size:100% 100%;
-        -fx-rotate:0  +x  ;
+        -fx-rotate:0   ;
         
       
            }
