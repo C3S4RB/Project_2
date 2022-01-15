@@ -85,13 +85,11 @@ public class VistaExplorarController implements Initializable {
 
         switch (comand[0]) {
             case "avanzar":
-                System.out.println("metodoAvanzr");
-                System.out.println(cbRover.getValue());
-                cbRover.getValue().avanzar();
-                System.out.println("caer");
-                comdIngresado.nextWord();
-
+                if (limites()) {
+                    cbRover.getValue().avanzar();
+                }
                 comdIngresado.appendText(comando);
+
                 break;
             case "girar:90":
 
@@ -161,6 +159,17 @@ public class VistaExplorarController implements Initializable {
             App.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private boolean limites() {
+        double alturaRover = cbRover.getValue().getImgv().getFitHeight();
+        double anchoRover = cbRover.getValue().getImgv().getFitWidth();
+
+        if (panelExplorar.getPrefHeight() - alturaRover > alturaRover && panelExplorar.getPrefWidth() - anchoRover > anchoRover) {
+            return true;
+        } else {
+            return false;
         }
     }
 

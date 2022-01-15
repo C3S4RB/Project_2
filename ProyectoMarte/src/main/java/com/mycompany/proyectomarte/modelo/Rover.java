@@ -4,7 +4,18 @@
  */
 package com.mycompany.proyectomarte.modelo;
 
+import com.mycompany.proyectomarte.data.CONSTANTES;
+import com.mycompany.proyectomarte.data.CraterData;
+import com.mycompany.proyectomarte.data.MineralData;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 
@@ -102,13 +113,39 @@ public abstract class Rover implements RoverI {
 
     }
 
-    /*
-    public String sensar(){
-        
-    if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
-    
+    @Override
+    public void sensar() {
+        LocalDate fecha = LocalDate.now();
+        //if(){
+
+        List<String> minerales = MineralData.leerMineral();
+        List<String> mnrl = new ArrayList<>();
+        Random random = new Random();
+
+        List<Crater> crateres = CraterData.leerCrateres();
+
+        for (Crater c : crateres) {
+            if (imgv.intersects(c.getCircle().getLayoutBounds())) {
+                for (int x = 0 ; x < random.nextInt(minerales.size()); x++) {
+                    mnrl.add(minerales.get(random.nextInt(minerales.size())));
+                }
+
+                try (BufferedWriter outputStream
+                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
+
+                    //outputStream.write(fecha + ";" + " " + ";" + mnrl);
+                    //outputStream.newLine();
+
+                } catch (FileNotFoundException e) {
+                    System.out.println("Error opening the file out.txt." + e.getMessage());
+                } catch (IOException e) {
+                    System.out.println("IOException." + e.getMessage());
+                }
+            }
+        }
+
     }
-     */
+
     public String getUrlImagen() {
         return urlImagen;
     }
