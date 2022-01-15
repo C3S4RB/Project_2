@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class Registro {
     private LocalDate fecha;
-    private Crater crater;
+    private String crater;
     private List<String> mineralesEncontrados;
 
-    public Registro(LocalDate fecha, Crater crater, List<String> mineralesEncontrados) {
+    public Registro(LocalDate fecha, String crater, List<String> mineralesEncontrados) {
         this.fecha = fecha;
         this.crater = crater;
         this.mineralesEncontrados = mineralesEncontrados;
@@ -26,7 +26,7 @@ public class Registro {
         return fecha;
     }
 
-    public Crater getCrater() {
+    public String getCrater() {
         return crater;
     }
 

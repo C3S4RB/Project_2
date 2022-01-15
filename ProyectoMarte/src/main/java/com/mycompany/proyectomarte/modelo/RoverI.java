@@ -28,5 +28,4 @@ public interface RoverI {
     void cargar();//le indica al robot que inicie operación de recarga.
     
     
-    
 }

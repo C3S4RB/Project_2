@@ -1,0 +1,2 @@
+2021-12-11;Beaker;Aluminio,Oro,Plata
+2021-12-12;Mead;Calcio,Titanio,Aluminio

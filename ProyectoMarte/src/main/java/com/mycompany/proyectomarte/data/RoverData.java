@@ -23,8 +23,6 @@ public class RoverData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "rovers.txt";
 
-
-
     public static List<Rover> leerRovers() {
         List<Rover> rovers = new ArrayList<>();
         try (BufferedReader bf
@@ -45,7 +43,7 @@ public class RoverData {
             }
 
         } catch (IOException ex) {
-            System.out.println("no se pudo cargar la informacion de los agentes");
+            System.out.println("No se pudo cargar la informacion de los rovers");
             ex.printStackTrace();
         }
         return rovers;

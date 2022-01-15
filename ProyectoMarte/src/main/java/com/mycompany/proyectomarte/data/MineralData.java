@@ -29,7 +29,6 @@ public class MineralData {
                 //Mineral mineral = new Mineral(linea);
                 strMinerales.add(linea);
             }
-
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los minerales");
             ex.printStackTrace();

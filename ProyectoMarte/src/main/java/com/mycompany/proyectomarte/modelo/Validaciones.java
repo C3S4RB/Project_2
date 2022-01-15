@@ -69,7 +69,8 @@ public class Validaciones {
         //Muestra la alerta
         alert.showAndWait();
     }
-
+    
+    /*
     //Este no va
     public static List<Crater> crateresCumplen(List<Crater> crateres, String mineral) {
         List<Crater> crateresCumplen = new ArrayList<>();
@@ -91,7 +92,7 @@ public class Validaciones {
     public static String mineralesCraterCumplen(Crater cr) {
         List<String> mineralesN = new ArrayList<>();
         List<Mineral> mineralesCrater = cr.getMinerales();
-
+        
         for (Mineral mn : mineralesCrater) {
             mineralesN.add(mn.getNombreMineral());
         }
@@ -110,7 +111,7 @@ public class Validaciones {
         }
         return registroCumplen;
     }
-
+    
     public static List<Registro> registroFinal(List<Registro> registroCumplenFecha, String mineral) {
         //List<Crater> crateresRegistro = new ArrayList<>();
         List<Registro> registroF = new ArrayList<>();
@@ -130,7 +131,8 @@ public class Validaciones {
         }
         return registroF;
     }
-
+    */
+    
     public static String capital(String st) {
         st = st.toLowerCase();
         return st.substring(0, 1).toUpperCase() + st.substring(1).replace(" ", "");
