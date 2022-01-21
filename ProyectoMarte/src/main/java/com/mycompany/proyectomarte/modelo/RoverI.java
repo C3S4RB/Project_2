@@ -12,11 +12,11 @@ public interface RoverI {
     void avanzar();///mueve el robot de su posición hacia delante.
     
         
-    void girar();///gira el robot g grados hacia la derecha
+    void girar(double n);///gira el robot g grados hacia la derecha
     
     
     
-    void dirigirse();///le indica al robot que debe dirigirse a la posición x,y 
+    void dirigirse(double x, double y);///le indica al robot que debe dirigirse a la posición x,y 
     //del mapa. El robot debe de forma automática encontrar la ruta para llegar al sitio en x,y y luego dirigirse a eselugar 
  
     

@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,7 +27,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
@@ -38,11 +38,15 @@ public class VistaExplorarController implements Initializable {
     @FXML
     private Pane panelExplorar;
     @FXML
-    private TextField comdIngresado;
+    private ComboBox<Rover> cbRover;
     @FXML
     private TextField comandoTxt;
     @FXML
-    private ComboBox<Rover> cbRover;
+    private TextArea comdIngresado;
+
+    private StackPane st;
+    private Rover rover;
+    private ImageView roverImg;
 
     /**
      * Initializes the controller class.
@@ -50,72 +54,92 @@ public class VistaExplorarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("entra");
+
         List<Rover> rovers = RoverData.leerRovers();
 
         cbRover.getItems().addAll(rovers);
 
         for (Crater crater : Nasa.getCrateres()) {
 
-            Circle c = new Circle(crater.getRadiocrater(), Color.RED);
-            c.setStroke(Color.DARKRED);
-            c.setFill(Color.TRANSPARENT);
-
             Label l = new Label(crater.getNombrecrater());
-            StackPane st = new StackPane();
-            double d = 2 * c.getRadius();
+            st = new StackPane();
+            double d = 2 * crater.getCircle().getRadius();
             if (panelExplorar.getPrefHeight() - d > crater.getUbicacion().getLongitud() && panelExplorar.getPrefWidth() - d > crater.getUbicacion().getLatitud()) {
-                st.getChildren().addAll(c, l);
+                st.getChildren().addAll(crater.getCircle(), l);
                 panelExplorar.getChildren().addAll(st);
                 st.setLayoutX(crater.getUbicacion().getLatitud());
                 st.setLayoutY(crater.getUbicacion().getLongitud());
-                crater.setCircle(c);
+                crater.setCircle(crater.getCircle());
             }
 
         }
 
-    }//vpaneRover.getPrefHeight
+    }
+
+    @FXML
+    private void cargarRover(ActionEvent event) {
+        rover = cbRover.getValue();
+        System.out.println(rover);
+        if (roverImg != null) {
+
+            panelExplorar.getChildren().remove(roverImg);
+        }
+
+        try {
+
+            InputStream input = App.class.getResource(rover.getUrlImagen()).openStream();
+            Image img = new Image(input, 50, 50, true, true);
+            roverImg = new ImageView(img);
+            roverImg.setLayoutX(rover.getUbicacion().getLongitud());
+            roverImg.setLayoutY(rover.getUbicacion().getLatitud());
+            roverImg.setRotate(rover.getGrados());
+        } catch (NullPointerException | IOException ex) {
+            roverImg = new ImageView();
+        }
+
+        panelExplorar.getChildren().add(roverImg);
+        rover.setImgv(roverImg);
+
+    }
 
     @FXML
     private void recibirComando(ActionEvent event) {
-
-        String comando = comandoTxt.getText().replace(" ", "").toLowerCase();
-
-        String[] comand = comando.split(":");
-
+        String comando = comandoTxt.getText().replace(" ", "").toLowerCase();//dirigirase:20,30
+        String[] comand = comando.split(":"); //girar:90 
         switch (comand[0]) {
             case "avanzar":
-                if (limites()) {
-                    cbRover.getValue().avanzar();
+                if(limites()){
+                comdIngresado.appendText("\n" + comando);
+                System.out.println("si entro avanzar");
+                rover.avanzar();
+                //roverImg.
                 }
-                comdIngresado.appendText(comando);
-
                 break;
-            case "girar:90":
-
-                comdIngresado.appendText(comando);
-                //comand[1]
-                cbRover.getValue().girar(Double.parseDouble(comand[1]));
-
+            case "girar":
+                comdIngresado.appendText("\n" + comando);
+                // roverImg.setRotate(rover.getGrados());
+                //roverImg.setRotate(Double.parseDouble(comand[1]) + roverImg.getRotate());
+                //rover.getUbicacion().setLongitud(roverImg.getLayoutX());
+                 //rover.getUbicacion().setLatitud(roverImg.getLayoutY());
+                 //rover.setGrados();
+                
+                        //ion(ubicacion);
+               rover.girar(Double.parseDouble(comand[1]) + rover.getImgv().getRotate());
                 break;
-            case "dirigirse:15;125":
-                String[] coman = comand[1].split(";");
-                //x=coman[0]
-                //y=coman[1]
-                cbRover.getValue().dirigirse(Double.parseDouble(coman[0]), Double.parseDouble(coman[1]));
-                comdIngresado.appendText(comando);
+            case "dirigirse":
+                comdIngresado.appendText("\n" + comando);
+                String[] xy = comand[1].split(",");
+                rover.dirigirse(Double.parseDouble(xy[0]), Double.parseDouble(xy[1]));
                 break;
             case "sensar":
-                comdIngresado.appendText(comando);
-                cbRover.getValue().sensar();
+                comdIngresado.appendText("\n" + comando);
+                rover.sensar();
                 break;
             case "cargar":
-
-                comdIngresado.appendText(comando);
-                cbRover.getValue().cargar();
+                comdIngresado.appendText("\n" + comando);
+                rover.cargar();
                 break;
             default:
-                //alerta
                 Validaciones.lanzarAlerta("No existe comando");
                 break;
         }
@@ -123,53 +147,28 @@ public class VistaExplorarController implements Initializable {
     }
 
     @FXML
-    private void cargarRover(ActionEvent event) {
-        //  
-        // roverChosed.setRectan(recta);
-
-        ImageView rover = null;
-        try {
-            System.out.println("entra2");
-
-            InputStream input = App.class.getResource(cbRover.getValue().getUrlImagen()).openStream();
-            Image img = new Image(input, 100, 100, true, true);
-            //   Image img = new Image("rover.jpg", 100, 100, true, true);
-
-            rover = new ImageView(img);
-            rover = new ImageView(img);
-
-        } catch (NullPointerException | IOException ex) {
-            //        ex.printStackTrace();
-            System.out.println("entr3");
-            rover = new ImageView();
-
-        }
-        System.out.println("4");
-        panelExplorar.getChildren().add(rover);
-        cbRover.getValue().setImgv(rover);
-    }
-
-    @FXML
     private void regresar(MouseEvent event) {
-        //redirigir a la ventana inicio
+
         Parent root;
         try {
             root = App.loadFXML("VistaInicio");
-            //usar ese contenedor raiz en la escena principal
             App.setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    private boolean limites() {
-        double alturaRover = cbRover.getValue().getImgv().getFitHeight();
-        double anchoRover = cbRover.getValue().getImgv().getFitWidth();
-
-        if (panelExplorar.getPrefHeight() - alturaRover > alturaRover && panelExplorar.getPrefWidth() - anchoRover > anchoRover) {
+        private boolean limites() {
+        //double h = cbRover.getValue().getUbicacion().getLatitud();
+        // double x = cbRover.getValue().getUbicacion().getLongitud();
+        double y = rover.getImgv().getLayoutY();
+        double x = rover.getImgv().getLayoutX();
+        System.out.println(panelExplorar.getPrefHeight() + "+" + panelExplorar.getPrefWidth());
+        System.out.println(y + "+" + x);
+        if ((panelExplorar.getPrefHeight()-50   > y  ||  y>0   )&& (panelExplorar.getPrefWidth() -50 >= x || x>0 )) {
             return true;
         } else {
             return false;
+            
         }
     }
 

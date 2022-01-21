@@ -38,7 +38,13 @@ public class Ubicacion {
     public static double calcularDistancia(Ubicacion u1,Ubicacion u2) {
         return Math.sqrt(Math.pow((u2.latitud - u1.latitud), 2) + Math.pow((u2.longitud - u1.longitud), 2));
     }
-
+public static double calcularDistancia(Ubicacion u1) {
+        return Math.sqrt(Math.pow((u1.latitud), 2) + Math.pow(( u1.longitud), 2));
+    }
+ public static double calcularDistancia(Double x1,Double x2,Double y1,Double y2) {
+        return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+    }
+ 
 
     @Override
     public String toString() {

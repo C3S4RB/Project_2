@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyectomarte.modelo;
 
+import com.mycompany.proyectomarte.Nasa;
+import com.mycompany.proyectomarte.VistaExplorarController;
 import com.mycompany.proyectomarte.data.CONSTANTES;
 import com.mycompany.proyectomarte.data.CraterData;
 import com.mycompany.proyectomarte.data.MineralData;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -26,7 +29,7 @@ import javafx.scene.shape.Rectangle;
 public abstract class Rover implements RoverI {
 
     private Ubicacion ubicacion;
-    private Double grados;
+    private double grados;
     private String nombreR;
     private double radioRover = 50;
     private ImageView imgv;
@@ -92,20 +95,47 @@ public abstract class Rover implements RoverI {
 
     @Override
     public void avanzar() {
-        System.out.println("1");
-        double x = imgv.getLayoutX();
-        System.out.println("2");
-        double y = imgv.getLayoutY();
-        System.out.println("3");
-        double nUbicacion = x + delta;
-        System.out.println("4");
-        imgv.setLayoutX(nUbicacion);
-        System.out.println("5");
+       
+        double nUbicaciony = ubicacion.getLatitud();
+        double nUbicacionx = ubicacion.getLongitud();
+       
+        double hpta=2 * Math.sqrt(delta);
+                      
 
-        // double uy   =rectan.getLayoutY();
+        double newY = hpta * Math.sin(Math.toRadians(imgv.getRotate()));
+        System.out.println(imgv.getRotate() + "Angle");
+        double newX = hpta * Math.cos(Math.toRadians(imgv.getRotate()));
+        System.out.println(grados + "grados");
+        System.out.println(newY + "----" + newX);  //d*squart(2)
+
+        if (newY == 0) {
+
+            ubicacion.setLatitud(imgv.getLayoutY());
+            ubicacion.setLongitud(newX+nUbicacionx);
+        } else if (newX == 0) {
+            ubicacion.setLatitud(newY+nUbicaciony);
+            ubicacion.setLongitud(imgv.getLayoutX());
+        } else {
+            
+            ubicacion.setLongitud(newX+nUbicacionx);
+            
+            ubicacion.setLatitud(newY+nUbicaciony);
+           // ubicacion.setLongitud(newX);
+
+        }
+
+       imgv.setLayoutX(ubicacion.getLongitud());
+        imgv.setLayoutY(ubicacion.getLatitud());
+
     }
 
     public void girar(double n) {
+        imgv.setRotate(n);
+        grados = n;
+        ubicacion.setLatitud(imgv.getLayoutY());
+        ubicacion.setLongitud(imgv.getLayoutX());
+        //  imgv.setLayoutX(ubicacion.getLongitud());
+        //imgv.setLayoutY(ubicacion.getLatitud());
 
     }
 
@@ -113,12 +143,6 @@ public abstract class Rover implements RoverI {
 
     }
 
-<<<<<<< HEAD
-    public void sensar() {
-
-        //if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
-=======
-    @Override
     public void sensar() {
         LocalDate fecha = LocalDate.now();
         //if(){
@@ -127,20 +151,25 @@ public abstract class Rover implements RoverI {
         List<String> mnrl = new ArrayList<>();
         Random random = new Random();
 
-        List<Crater> crateres = CraterData.leerCrateres();
+        //List<Crater> crateres = CraterData.leerCrateres();
+        for (Crater c : Nasa.getCrateres()) {
+            System.out.println("AAAAA8");
 
-        for (Crater c : crateres) {
             if (imgv.intersects(c.getCircle().getLayoutBounds())) {
-                for (int x = 0 ; x < random.nextInt(minerales.size()); x++) {
+                //  if (c.getCircle().intersects(imgv.getLayoutX(),imgv.getLayoutY(),imgv.getFitWidth(),imgv.getFitHeight())) {
+                System.out.println("AAAAAAAAAAAAAAAAAAa");
+
+                c.getCircle().setFill(Color.TRANSPARENT);
+                int cantidad = random.nextInt(minerales.size()) + 1;
+                for (int x = 0; x < cantidad; x++) {
                     mnrl.add(minerales.get(random.nextInt(minerales.size())));
                 }
 
                 try (BufferedWriter outputStream
-                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
+                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", false))) {
 
-                    //outputStream.write(fecha + ";" + " " + ";" + mnrl);
+                    outputStream.write(fecha + ";" + c.getNombrecrater() + ";" + mnrl);
                     //outputStream.newLine();
-
                 } catch (FileNotFoundException e) {
                     System.out.println("Error opening the file out.txt." + e.getMessage());
                 } catch (IOException e) {
@@ -149,7 +178,6 @@ public abstract class Rover implements RoverI {
             }
         }
 
->>>>>>> f98124ea08ba8e3d496e72a1e25c377aed7a2d77
     }
 
     public String getUrlImagen() {

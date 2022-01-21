@@ -33,7 +33,7 @@ public class Crater {
     public void setCircle(Circle circle) {
         this.circle = circle;
     }
-    private List<Mineral> minerales = new ArrayList<>();
+  
 
     public Crater(String idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater) {
         this.idcrater = idcrater;
@@ -58,21 +58,15 @@ public class Crater {
         this.ubicacion = ubicacion;
     }
 
-    public void asignarMineral(Mineral mineral) {
-        minerales.add(mineral);
-    }
 
     public double getRadiocrater() {
         return radiocrater;
     }
 
-    public List<Mineral> getMinerales() {
-        return minerales;
-    }
 
     //metodo toString
     @Override
     public String toString() {
-        return "Crater{" + "nombreCrater = " + nombrecrater + ", Lista Minerales = " + minerales+"}";//"idcrater = " + idcrater + ", nombreCrater = " + nombrecrater + ", ubicacion = " + ubicacion + ",radio = " + radiocrater + ", Lista Minerales = " + minerales+'}';
+        return "Crater{" + "nombreCrater = " + nombrecrater + "";//"idcrater = " + idcrater + ", nombreCrater = " + nombrecrater + ", ubicacion = " + ubicacion + ",radio = " + radiocrater + ", Lista Minerales = " + minerales+'}';
     }
 }

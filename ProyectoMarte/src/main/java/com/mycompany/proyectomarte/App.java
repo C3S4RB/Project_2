@@ -77,7 +77,7 @@ public class App extends Application {
         //System.out.println("Registros: "+registros);
         //LocalDate fecha = LocalDate.of(2021,01,12);
         //System.out.println(fecha);        
-        System.out.println(LocalDate.now());
+       /* System.out.println(LocalDate.now());
 
         List<Registro> r = RegistroData.leerRegistros();
         System.out.println(r);
@@ -98,14 +98,14 @@ public class App extends Application {
         try (BufferedWriter outputStream
                 = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
 
-            outputStream.write(fecha + ";" + " " + ";" + String.join(",", mnrl));
+          //  outputStream.write(fecha + ";" + " " + ";" + String.join(",", mnrl));
             outputStream.newLine();
 
         } catch (FileNotFoundException e) {
             System.out.println("Error opening the file out.txt." + e.getMessage());
         } catch (IOException e) {
             System.out.println("IOException." + e.getMessage());
-        }
+        }*/
     }
 
     /**
