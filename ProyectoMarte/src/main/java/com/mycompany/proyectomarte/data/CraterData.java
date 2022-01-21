@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 /**
  *
@@ -35,8 +37,11 @@ public class CraterData {
                 
                 String[] c = linea.split(",");
                 //c1 es el nombre del crater
-                Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[2]), Double.valueOf(c[3]));
+                Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[3]), Double.valueOf(c[2]));
                 Crater crater = new Crater(c[0], c[1], ubicacion, Double.valueOf(c[4]));
+                 Circle circle = new Circle(crater.getRadiocrater(), Color.RED);
+                 circle.setStroke(Color.DARKRED);
+                crater.setCircle(circle);
                 crateres.add(crater);
             }
         } catch (IOException ex) {

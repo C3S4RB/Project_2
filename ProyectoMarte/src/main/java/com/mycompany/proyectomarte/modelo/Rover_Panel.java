@@ -11,30 +11,12 @@ package com.mycompany.proyectomarte.modelo;
 public class Rover_Panel extends Rover {
 
     public Rover_Panel(String string, Ubicacion u) {
-        super(string,u);
+        super(string, u);
         super.setUrlImagen("wally.png");
     }
 
-
-
-    @Override
-    public void girar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void dirigirse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void sensar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void cargar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }//llama al metodo dirigirse (100,110) y un mensaje mensaje “abriendo panales” 
+
 }
