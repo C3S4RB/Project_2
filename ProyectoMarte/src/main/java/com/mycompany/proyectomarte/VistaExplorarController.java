@@ -59,7 +59,7 @@ public class VistaExplorarController implements Initializable {
 
             Circle c = new Circle(crater.getRadiocrater(), Color.RED);
             c.setStroke(Color.DARKRED);
-            c.setFill(Color.TRANSPARENT);
+            //c.setFill(Color.TRANSPARENT);
 
             Label l = new Label(crater.getNombrecrater());
             StackPane st = new StackPane();

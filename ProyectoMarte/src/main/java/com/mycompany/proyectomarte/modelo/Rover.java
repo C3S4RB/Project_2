@@ -15,10 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
-
 /**
  *
  * @author isaac
@@ -113,13 +110,10 @@ public abstract class Rover implements RoverI {
 
     }
 
-<<<<<<< HEAD
+    @Override
     public void sensar() {
 
         //if((Ubicacion.calcularDistancia(ubicacion, ubicacionCRatrer)<radioCrater ){}
-=======
-    @Override
-    public void sensar() {
         LocalDate fecha = LocalDate.now();
         //if(){
 
@@ -131,7 +125,7 @@ public abstract class Rover implements RoverI {
 
         for (Crater c : crateres) {
             if (imgv.intersects(c.getCircle().getLayoutBounds())) {
-                for (int x = 0 ; x < random.nextInt(minerales.size()); x++) {
+                for (int x = 0; x < random.nextInt(minerales.size()); x++) {
                     mnrl.add(minerales.get(random.nextInt(minerales.size())));
                 }
 
@@ -140,7 +134,6 @@ public abstract class Rover implements RoverI {
 
                     //outputStream.write(fecha + ";" + " " + ";" + mnrl);
                     //outputStream.newLine();
-
                 } catch (FileNotFoundException e) {
                     System.out.println("Error opening the file out.txt." + e.getMessage());
                 } catch (IOException e) {
@@ -148,8 +141,6 @@ public abstract class Rover implements RoverI {
                 }
             }
         }
-
->>>>>>> f98124ea08ba8e3d496e72a1e25c377aed7a2d77
     }
 
     public String getUrlImagen() {

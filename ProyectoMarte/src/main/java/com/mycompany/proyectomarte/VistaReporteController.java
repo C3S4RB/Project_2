@@ -12,6 +12,8 @@ import static com.mycompany.proyectomarte.modelo.Validaciones.validarMineral;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -126,20 +128,19 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
                         //Mostramos en la tabla
                     } else if (validarFecha(fechaI) && validarFecha(fechaF) && !fechaFin.isBefore(fechaInicio) && !fechaFin.isEqual(fechaInicio) && validarMineral(mineral)) {
                         tableView.getItems().clear();
-                        //Mensaje que diga, procesando informacion, pilas!!!!!!!11
-
-                        //Creo los registros
+                        
                         /*
-                        List<Registro> rcf = registroCumplenFecha(fechaInicio, fechaFin, registro);
-                        List<Registro> registroFinal = registroFinal(rcf, mineral);
-                        for(Registro rf : registroFinal){                            
-                            //Creo el registro
-                            Registro re = new Registro(rf.getFecha(), rf.getCrater(), rf.getMineralesEncontrados());                         
-                            //registros.add(re);                           
-                        }
-                        */
+                        List<Registro> registros = RegistroData.leerRegistros();
+                        //System.out.println(r);
+                        Collections.sort(registros);
+                        System.out.println(r);
+    
+                        for(Registro r : registros){
+                `           registros.add(r);           
+                        }                        
                         tableView.setItems(registros);
-
+                        */
+                        
                         //Validaciones.lanzarAlerta("Todo bien :v");
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         //Mostramos un mensaje con el contenido:

@@ -38,7 +38,7 @@ public class VistaInicioController implements Initializable {
     @FXML
     private void planificarExploracion(MouseEvent event) throws IOException {
         System.out.println("En planificar exploracion");
-        Parent root = App.loadFXML("vistaPlanificar");
+        Parent root = App.loadFXML("VistaPlanificar");
         App.setRoot(root);
     }
 

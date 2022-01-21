@@ -6,7 +6,6 @@ import com.mycompany.proyectomarte.data.RegistroData;
 import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Registro;
 import com.mycompany.proyectomarte.modelo.Rover;
-import com.mycompany.proyectomarte.modelo.Validaciones;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -47,8 +46,7 @@ public class App extends Application {
         stage.getIcons().add(new Image(App.class.getResourceAsStream("marteIcon.png")));
 
         scene = new Scene(vista, 1200, 690);
-        stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setScene(scene);        
         stage.show();
         /*
         List<Crater> craterValidos = Validaciones.crateresCumplen(Nasa.getCrateres(), "Aluminio");
@@ -98,8 +96,8 @@ public class App extends Application {
         try (BufferedWriter outputStream
                 = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
 
-            outputStream.write(fecha + ";" + " " + ";" + String.join(",", mnrl));
-            outputStream.newLine();
+            //outputStream.write(fecha + ";" + " " + ";" + String.join(",", mnrl));
+            //outputStream.newLine();
 
         } catch (FileNotFoundException e) {
             System.out.println("Error opening the file out.txt." + e.getMessage());

@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
+<VBox alignment="CENTER" prefHeight="690.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
    <children>
-      <HBox>
+      <HBox prefHeight="690.0" prefWidth="1200.0" spacing="5.0">
          <children>
-            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="502.0" prefWidth="845.0" stylesheets="@vistaexplorar.css" />
-            <VBox prefHeight="406.0" prefWidth="187.0">
+            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="690.0" prefWidth="980.0" stylesheets="@vistaexplorar.css" />
+            <VBox prefHeight="690.0" prefWidth="200.0" spacing="8.0">
                <children>
                   <Label text="Escoger Rover:" />
                   <ComboBox fx:id="cbRover" onAction="#cargarRover" prefWidth="150.0" />
@@ -22,20 +22,23 @@
                   <TextField fx:id="comandoTxt" onAction="#recibirComando" />
                   <Label prefHeight="18.0" prefWidth="142.0" text="Comandos Ingresados:" />
                   <TextField fx:id="comdIngresado" alignment="TOP_LEFT" prefHeight="450.0" prefWidth="187.0" />
+                  <VBox alignment="CENTER" prefHeight="18.0" prefWidth="600.0">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
                </children>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </VBox>
          </children>
       </HBox>
-      <VBox alignment="CENTER">
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </VBox>
    </children>
 </VBox>
