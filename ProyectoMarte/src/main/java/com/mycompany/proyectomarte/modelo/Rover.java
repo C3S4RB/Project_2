@@ -142,7 +142,7 @@ public abstract class Rover implements RoverI {
         }else if(x > ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
             imgv.setRotate(360-Math.toDegrees(angulo));
         }else{
-        
+            imgv.setRotate(Math.toDegrees(angulo));
         }
 
         System.out.println("x:" + String.valueOf(ubicacion.getLongitud()) + ".....y:" + String.valueOf(ubicacion.getLatitud()));
