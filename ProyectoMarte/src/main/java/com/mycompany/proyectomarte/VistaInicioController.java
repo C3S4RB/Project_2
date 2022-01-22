@@ -4,8 +4,14 @@
  */
 package com.mycompany.proyectomarte;
 
+import com.mycompany.proyectomarte.data.CONSTANTES;
+import com.mycompany.proyectomarte.modelo.Rover;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -33,6 +39,7 @@ public class VistaInicioController implements Initializable {
         System.out.println("En explorar superficie");
          Parent root = App.loadFXML("VistaExplorar");
         App.setRoot(root);
+        actualizarPosicion();
     }
 
     @FXML
@@ -52,7 +59,30 @@ public class VistaInicioController implements Initializable {
     @FXML
     private void salir(MouseEvent event) {
     //se termina la aplicacion
+    actualizarPosicion();
         Platform.exit();
+        
+    }
+    public void actualizarPosicion() {
+        try (BufferedWriter outputStream
+                = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "rovers.txt", false))) {
+            // 
+            List<Rover> rovers = VistaExplorarController.getRovers();
+            
+            for (Rover r : rovers) {
+              //  r.getImgv().setRotate(r.getImgv().getRotate());
+                double nx = r.getUbicacion().getLongitud();
+                double ny = r.getUbicacion().getLatitud();
+                outputStream.write(r.getNombreR() + "," + String.valueOf(ny) + "," + String.valueOf(nx) + "," + r.getTipo() + "\n");
+                
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error opening the file out.txt." + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IOException." + e.getMessage());
+        }
+
     }
     
 }

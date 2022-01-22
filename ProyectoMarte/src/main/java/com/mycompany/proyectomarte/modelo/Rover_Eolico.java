@@ -13,6 +13,7 @@ public class Rover_Eolico extends Rover {
     public Rover_Eolico(String string, Ubicacion u) {
         super(string, u);
         super.setUrlImagen("eva.png");
+        super.setTipo("eolico");
     }
 
     public void cargar() {
@@ -21,6 +22,7 @@ public class Rover_Eolico extends Rover {
     
     
     }
+    
     //“despliegue de molinos” y el rover gira para ver hay el norte del planeta porque los vientos siempre giran de norte a sur.
 
 }

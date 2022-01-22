@@ -31,6 +31,15 @@ public abstract class Rover implements RoverI {
     private ImageView imgv;
     private static double delta = 50;
     private String urlImagen;
+    private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     public Rover(String nombreR, Ubicacion ubicacion) {
         this.ubicacion = ubicacion;

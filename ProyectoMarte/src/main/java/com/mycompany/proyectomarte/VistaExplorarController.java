@@ -5,6 +5,7 @@
 package com.mycompany.proyectomarte;
 
 import com.mycompany.proyectomarte.data.CONSTANTES;
+import com.mycompany.proyectomarte.data.CraterData;
 import com.mycompany.proyectomarte.data.RoverData;
 import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Rover;
@@ -31,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -54,23 +56,25 @@ public class VistaExplorarController implements Initializable {
     double ubicacionx;
     double ubicaciony;
 
-    private List<Rover> rovers=Nasa.getRovers();
+    private static List<Rover> rovers=Nasa.getRovers();
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
 
         cbRover.getItems().addAll(rovers);
-
-        for (Crater crater : Nasa.getCrateres()) {
+        List<Crater> crateresF = CraterData.pintar(CraterData.listaSensados(),Nasa.getCrateres());
+        for (Crater crater : crateresF) {
 
             Label l = new Label(crater.getNombrecrater());
             st = new StackPane();
             double d = 2 * crater.getCircle().getRadius();
             if (panelExplorar.getPrefHeight() - d > crater.getUbicacion().getLongitud() && panelExplorar.getPrefWidth() - d > crater.getUbicacion().getLatitud()) {
+                System.out.println(crater.getCircle().getStroke());
                 st.getChildren().addAll(crater.getCircle(), l);
                 panelExplorar.getChildren().addAll(st);
                 st.setLayoutX(crater.getCircle().getCenterX());
@@ -213,6 +217,11 @@ public class VistaExplorarController implements Initializable {
             
         }
     }*/
+
+    public static List<Rover> getRovers() {
+        return rovers;
+    }
+    
     class dirigirRunnable implements Runnable {
 
         @Override

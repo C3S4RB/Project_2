@@ -21,6 +21,7 @@ import javafx.scene.shape.Circle;
 public class CraterData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "crateres_info.txt";
+    public static String ruta2 = CONSTANTES.ARCHIVOS + "registros.txt";
 
     public static List<Crater> leerCrateres() {
         List<Crater> crateres = new ArrayList<>();
@@ -34,24 +35,68 @@ public class CraterData {
                 //int idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater
                 //Contructor Ubicacion tiene 
                 //double latitud, double longitud
-                
                 String[] c = linea.split(",");
                 //c1 es el nombre del crater
                 Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[3]), Double.valueOf(c[2]));
                 Crater crater = new Crater(c[0], c[1], ubicacion, Double.valueOf(c[4]));
-                 Circle circle = new Circle(crater.getRadiocrater(), Color.RED);
-                 circle.setCenterX(Double.valueOf(c[2]));
-                  circle.setCenterY(Double.valueOf(c[3]));
-                 circle.setStroke(Color.DARKRED);
+                Circle circle = new Circle(crater.getRadiocrater(), Color.RED);
+                circle.setCenterX(Double.valueOf(c[2]));
+                circle.setCenterY(Double.valueOf(c[3]));
+
                 crater.setCircle(circle);
+                crater.getCircle().setStroke(Color.DARKRED);
+
                 crateres.add(crater);
             }
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los crateres");
             ex.printStackTrace();
         }
+
+        listaSensados();
         return crateres;
     }
-    
+
+    public static List<Crater> pintar(List<String> crateresNSensado, List<Crater> crateres) {
+        List<Crater> crateresF = new ArrayList<>();
+        for (Crater cra : crateres) {
+            for (String craterSensado : crateresNSensado) {
+
+                if (cra.getNombrecrater().equals(craterSensado)) {
+                    System.out.println(craterSensado);
+                    cra.getCircle().setStroke(Color.TRANSPARENT);
+
+                }
+
+            }
+            crateresF.add(cra);
+
+        }
+        return crateresF;
+    }
+
+    public static List<String> listaSensados() {
+        try (BufferedReader bfCRegistro
+                = new BufferedReader(new FileReader(ruta2))) {
+            List<String> crateresNSensado = new ArrayList<>();
+
+            String linea;
+            while ((linea = bfCRegistro.readLine()) != null) {
+                String craterSensado = linea.split(";")[1];
+
+                if (!crateresNSensado.contains(craterSensado)) {
+                    crateresNSensado.add(craterSensado);
+
+                }
+            }
+            return crateresNSensado;
+
+        } catch (IOException ex) {
+            System.out.println("No se pudo cargar la informacion de los crateres");
+            ex.printStackTrace();
+        }
+        return null;
+        
+    }
 
 }
