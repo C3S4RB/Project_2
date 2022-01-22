@@ -108,11 +108,8 @@ public abstract class Rover implements RoverI {
             ubicacion.setLatitud(newY + nUbicaciony);
             ubicacion.setLongitud(imgv.getLayoutX());
         } else {
-
             ubicacion.setLongitud(newX + nUbicacionx);
-
             ubicacion.setLatitud(newY + nUbicaciony);
-
         }
 
         imgv.setLayoutX(ubicacion.getLongitud());
@@ -172,12 +169,10 @@ public abstract class Rover implements RoverI {
                 for (int x = 0; x < cantidad; x++) {
                     mnrl.add(minerales.get(random.nextInt(minerales.size())));
                 }
-
                 try (BufferedWriter outputStream
-                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
-
+                        = new BufferedWriter(
+                                new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
                     outputStream.write(fecha + ";" + c.getNombrecrater() + ";" + String.join(",", mnrl) + "\n");
-                    //outputStream.newLine();
                 } catch (FileNotFoundException e) {
                     System.out.println("Error opening the file out.txt." + e.getMessage());
                 } catch (IOException e) {

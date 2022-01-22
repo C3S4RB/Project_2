@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyectomarte;
 
+import com.mycompany.proyectomarte.data.RegistroData;
 import com.mycompany.proyectomarte.modelo.Registro;
 import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Validaciones;
@@ -12,13 +13,14 @@ import static com.mycompany.proyectomarte.modelo.Validaciones.validarMineral;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,7 +32,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Ramses
  */
-public class VistaReporteController implements Initializable {//, Comparable<Reporte>{
+public class VistaReporteController implements Initializable {
 
     @FXML
     private TableColumn<Registro, LocalDate> columnaFecha;
@@ -47,11 +49,8 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
     @FXML
     private TextField txtFechaFin;
 
-    //En ? va la clase donde esta el registro
     private ObservableList<Registro> registros;
-
     private LocalDate fechaInicio;
-
     private LocalDate fechaFin;
 
     /**
@@ -62,7 +61,7 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
         registros = FXCollections.observableArrayList();
         columnaFecha.setCellValueFactory(new PropertyValueFactory("fecha"));
         columnaNombreCrater.setCellValueFactory(new PropertyValueFactory("crater"));
-        columnaMinerales.setCellValueFactory(new PropertyValueFactory("minerales"));
+        columnaMinerales.setCellValueFactory(new PropertyValueFactory("mineralesE"));
     }
 
     @FXML
@@ -109,7 +108,6 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
                         //Para crear el local date se sigue el formato año/mes/dia
                         String[] dateI = fechaI.split("-");
                         String[] dateF = fechaF.split("-");
-                        System.out.println("Hola pta");
                         fechaInicio = LocalDate.of(Integer.valueOf(dateI[2]), Integer.valueOf(dateI[1]), Integer.valueOf(dateI[0]));
                         fechaFin = LocalDate.of(Integer.valueOf(dateF[2]), Integer.valueOf(dateF[1]), Integer.valueOf(dateF[0]));
                         //Verificamos que la fecha Inicio este antes que la fecha fin
@@ -119,6 +117,7 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
                             Validaciones.lanzarAlerta("La fecha inicio y fin no pueden ser iguales.");
                         }
                     }
+
                     if (!validarMineral(Validaciones.capital(mineral))) {
                         Validaciones.lanzarAlerta("Nombre del mineral incorrecto.");
 
@@ -126,30 +125,36 @@ public class VistaReporteController implements Initializable {//, Comparable<Rep
                         //Mostramos en la tabla
                     } else if (validarFecha(fechaI) && validarFecha(fechaF) && !fechaFin.isBefore(fechaInicio) && !fechaFin.isEqual(fechaInicio) && validarMineral(mineral)) {
                         tableView.getItems().clear();
-                        
-                        /*
-                        List<Registro> registros = RegistroData.leerRegistros();
-                        //System.out.println(r);
-                        Collections.sort(registros);
-                        System.out.println(r);
-    
-                        for(Registro r : registros){
-                `           registros.add(r);           
-                        }                        
+
+                        registrovalido(fechaInicio, fechaFin, mineral);
+
+                        if (registros.isEmpty()) {
+                            Validaciones.lanzarAlertaInfo("No existen regitros en ese intervalo de fechas.");
+                        }
                         tableView.setItems(registros);
-                        */
-                        
-                        //Validaciones.lanzarAlerta("Todo bien :v");
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        //Mostramos un mensaje con el contenido:
-                        alert.setContentText("Todo bien :v");
-                        //Muestra la alerta
-                        alert.showAndWait();
                     }
                 }
             }
         } catch (NullPointerException ex) {
-            Validaciones.lanzarAlerta("El contenido no puede estar vacio");
+            Validaciones.lanzarAlerta("El contenido no puede estar vacio.");
+        }
+    }
+
+    private void registrovalido(LocalDate fechaInicio, LocalDate fechaFin, String mineral) {
+        List<Registro> registro = RegistroData.leerRegistros();
+        Collections.sort(registro);
+        for (Registro r : registro) {
+            if ((r.getFecha().isAfter(fechaInicio)) && (r.getFecha().isBefore(fechaFin)) || ((r.getFecha().isEqual(fechaInicio)) || r.getFecha().isEqual(fechaFin))) {
+                for (String m : r.getMineralesEncontrados()) {
+                    String[] min = m.split(",");
+                    for (String mi : min) {
+                        if (mi.equals(Validaciones.capital(mineral))) {
+                            registros.add(r);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 

@@ -15,6 +15,8 @@ public class Registro implements Comparable<Registro>{
     private LocalDate fecha;
     private String crater;
     private List<String> mineralesEncontrados;
+    private String mineralesE;
+    
 
     public Registro(LocalDate fecha, String crater, List<String> mineralesEncontrados) {
         this.fecha = fecha;
@@ -33,7 +35,11 @@ public class Registro implements Comparable<Registro>{
     public List<String> getMineralesEncontrados() {
         return mineralesEncontrados;
     }
-
+    
+    public String getMineralesE() {
+        return String.join(",", mineralesEncontrados);
+    }
+    
     @Override
     public String toString() {
         return "Registro{" + "fecha=" + fecha + ", crater=" + crater + ", minerales encontrados=" + mineralesEncontrados+ '}';

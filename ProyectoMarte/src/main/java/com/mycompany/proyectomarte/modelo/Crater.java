@@ -4,9 +4,6 @@
  */
 package com.mycompany.proyectomarte.modelo;
 
-
-import java.util.ArrayList;
-import java.util.List;
 import javafx.scene.shape.Circle;
 
 /**
@@ -34,7 +31,6 @@ public class Crater {
         this.circle = circle;
     }
   
-
     public Crater(String idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater) {
         this.idcrater = idcrater;
         this.nombrecrater = nombrecrater;

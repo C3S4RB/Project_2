@@ -6,7 +6,6 @@ package com.mycompany.proyectomarte.modelo;
 
 import com.mycompany.proyectomarte.data.CraterData;
 import com.mycompany.proyectomarte.data.MineralData;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Alert;
@@ -70,69 +69,16 @@ public class Validaciones {
         alert.showAndWait();
     }
     
-    /*
-    //Este no va
-    public static List<Crater> crateresCumplen(List<Crater> crateres, String mineral) {
-        List<Crater> crateresCumplen = new ArrayList<>();
-
-        for (Crater c : crateres) {
-            //obtenemos La lista de nombre de los minerales
-            List<Mineral> minerales = c.getMinerales();
-            for (Mineral m : minerales) {
-                if (m.getNombreMineral().equals(mineral)) {
-                    crateresCumplen.add(c);
-                    break;
-                }
-            }
-        }
-        return crateresCumplen;
+    //Lanzar Alerta tipo informacion
+    public static void lanzarAlertaInfo(String mensaje) {
+        //Alerta de tipo informacion
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //Mostramos un mensaje con el contenido:
+        alert.setContentText(mensaje);
+        //Muestra la alerta
+        alert.showAndWait();
     }
 
-    //Este no va
-    public static String mineralesCraterCumplen(Crater cr) {
-        List<String> mineralesN = new ArrayList<>();
-        List<Mineral> mineralesCrater = cr.getMinerales();
-        
-        for (Mineral mn : mineralesCrater) {
-            mineralesN.add(mn.getNombreMineral());
-        }
-        return String.valueOf(mineralesN).replace("[", "").replace("]", "");
-    }
-
-    //LocalDate.now() --> 2022-01-12
-    public static List<Registro> registroCumplenFecha(LocalDate fechaInicio, LocalDate fechaFin, List<Registro> registro) {
-        List<Registro> registroCumplen = new ArrayList<>();
-
-        for (Registro r : registro) {
-            LocalDate fecha = r.getFecha();
-            if (fechaInicio.isBefore(fecha) && fechaFin.isAfter(fecha)) {
-                registroCumplen.add(r);
-            }
-        }
-        return registroCumplen;
-    }
-    
-    public static List<Registro> registroFinal(List<Registro> registroCumplenFecha, String mineral) {
-        //List<Crater> crateresRegistro = new ArrayList<>();
-        List<Registro> registroF = new ArrayList<>();
-
-        for (Registro r : registroCumplenFecha) {
-            //crateresRegistro.add(r.getCrater());
-            //Obtenemos el crater del registro
-            Crater c = r.getCrater();
-            //Obtenemos La lista de nombre de los minerales de cada crater
-            List<Mineral> minerales = c.getMinerales();
-            for (Mineral m : minerales) {
-                if (m.getNombreMineral().equals(mineral)) {
-                    registroF.add(r);
-                    break;
-                }
-            }
-        }
-        return registroF;
-    }
-    */
-    
     public static String capital(String st) {
         st = st.toLowerCase();
         return st.substring(0, 1).toUpperCase() + st.substring(1).replace(" ", "");
