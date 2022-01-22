@@ -167,7 +167,7 @@ public abstract class Rover implements RoverI {
                 System.out.println(imgv.getImage().getWidth());
                 System.out.println("Rover:" + imgv.getLayoutX() + ":" + imgv.getLayoutX() + ":circle" + c.getCircle().getCenterX() + "" + c.getCircle().getCenterY() + "Radio:" + c.getCircle().getRadius());
                 System.out.println("LayoutX" + c.getCircle().getLayoutX() + "getX" + c.getCircle().getCenterX());
-                c.getCircle().setFill(Color.BLACK);
+                c.getCircle().setFill(Color.TRANSPARENT);
                 int cantidad = random.nextInt(minerales.size()) + 1;
                 for (int x = 0; x < cantidad; x++) {
                     mnrl.add(minerales.get(random.nextInt(minerales.size())));
@@ -212,12 +212,31 @@ public abstract class Rover implements RoverI {
     public boolean intersectaPunto(double x1, double y1) {
         if (x1 <= ubicacion.getLongitud() && y1 <= ubicacion.getLatitud()) {
             return true;
+        }
+        return false;
+    }
+    
+    public boolean intersectaPunto1(double x1, double y1) {
+        if (x1 >= ubicacion.getLongitud() && y1 <= ubicacion.getLatitud()) {
+            return true;
         } else {
             return false;
         }
     }
     
-    public boolean intersectaPunto1(double x1, double y1){
-        
+    public boolean intersectaPunto2(double x1, double y1) {
+        if (x1 >= ubicacion.getLongitud() && y1 >= ubicacion.getLatitud()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean intersectaPunto3(double x1, double y1) {
+        if (x1 <= ubicacion.getLongitud() && y1 >= ubicacion.getLatitud()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

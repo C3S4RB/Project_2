@@ -169,6 +169,7 @@ public class VistaExplorarController implements Initializable {
                 String[] xy = comand[1].split(",");
                 ubicacionx = Double.parseDouble(xy[0]);
                 ubicaciony = Double.parseDouble(xy[1]);
+                
                 rover.dirigirse(ubicacionx, ubicaciony);
                 dirigirRunnable dr = new dirigirRunnable();
                 Thread th = new Thread(dr);
@@ -217,10 +218,30 @@ public class VistaExplorarController implements Initializable {
         @Override
         public void run() {
             try {
-                while(!rover.intersectaPunto(ubicacionx,ubicaciony)) {
+                if(ubicacionx > rover.getUbicacion().getLatitud() && ubicaciony > rover.getUbicacion().getLatitud()){
+                    while(!rover.intersectaPunto(ubicacionx,ubicaciony)) {
                     System.out.println(!rover.intersectaPunto(ubicacionx,ubicaciony));
                     rover.avanzar();
-                    Thread.sleep(200);
+                    Thread.sleep(50);
+                    }
+                } else if(ubicacionx < rover.getUbicacion().getLatitud() && ubicaciony > rover.getUbicacion().getLatitud()){
+                    while(!rover.intersectaPunto1(ubicacionx,ubicaciony)) {
+                    System.out.println(!rover.intersectaPunto1(ubicacionx,ubicaciony));
+                    rover.avanzar();
+                    Thread.sleep(50);
+                    }
+                } else if(ubicacionx < rover.getUbicacion().getLatitud() && ubicaciony < rover.getUbicacion().getLatitud()){
+                    while(!rover.intersectaPunto2(ubicacionx,ubicaciony)) {
+                    System.out.println(!rover.intersectaPunto2(ubicacionx,ubicaciony));
+                    rover.avanzar();
+                    Thread.sleep(50);
+                    }
+                }else if (ubicacionx > rover.getUbicacion().getLatitud() && ubicaciony < rover.getUbicacion().getLatitud()){
+                    while(!rover.intersectaPunto3(ubicacionx,ubicaciony)) {
+                    System.out.println(!rover.intersectaPunto3(ubicacionx,ubicaciony));
+                    rover.avanzar();
+                    Thread.sleep(50);
+                    }
                 }
                 
             } catch (InterruptedException ex) {

@@ -1,2 +1,4 @@
 2022-01-21;Baker;Titanio,Fosforo,Magnesio,Sodio,Hierro,Sodio,Hierro,Titanio,Sodio
 2022-01-21;Potanina;Hierro,Hierro,Calcio
+2022-01-22;Dix;Potasio,Magnesio,Magnesio,Titanio,Hierro
+2022-01-22;Boleyn;Titanio
