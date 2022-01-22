@@ -133,22 +133,21 @@ public abstract class Rover implements RoverI {
     public void dirigirse(double x, double y) {
         double hpta = Ubicacion.calcularDistancia(x, ubicacion.getLongitud(), y, ubicacion.getLatitud());
         double angulo = Math.acos((Math.abs(x - ubicacion.getLongitud())) / hpta);
+
         if (x < ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
             imgv.setRotate(Math.toDegrees(angulo) + 180);
-        } else if(x < ubicacion.getLongitud() && y > ubicacion.getLatitud()) {
-            imgv.setRotate(180-Math.toDegrees(angulo));
-        }else if(x < ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
-            imgv.setRotate(Math.toDegrees(angulo)+180);
-        }else if(x > ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
-            imgv.setRotate(360-Math.toDegrees(angulo));
-        }else{
+        } else if (x < ubicacion.getLongitud() && y > ubicacion.getLatitud()) {
+            imgv.setRotate(180 - Math.toDegrees(angulo));
+        } else if (x < ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
+            imgv.setRotate(Math.toDegrees(angulo) + 180);
+        } else if (x > ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
+            imgv.setRotate(360 - Math.toDegrees(angulo));
+        } else {
             imgv.setRotate(Math.toDegrees(angulo));
         }
 
-        System.out.println("x:" + String.valueOf(ubicacion.getLongitud()) + ".....y:" + String.valueOf(ubicacion.getLatitud()));
-
-        System.out.println(Math.toDegrees(angulo));
-
+        //System.out.println("x:" + String.valueOf(ubicacion.getLongitud()) + ".....y:" + String.valueOf(ubicacion.getLatitud()));
+        //System.out.println(Math.toDegrees(angulo));
     }
 
     public void sensar() {
@@ -204,12 +203,21 @@ public abstract class Rover implements RoverI {
 
     public boolean interseccion(Crater crater) {
         if (Ubicacion.calcularDistancia(ubicacion, crater.getUbicacion()) <= crater.getRadiocrater()) {
-
             return true;
         } else {
             return false;
         }
-
     }
 
+    public boolean intersectaPunto(double x1, double y1) {
+        if (x1 <= ubicacion.getLongitud() && y1 <= ubicacion.getLatitud()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean intersectaPunto1(double x1, double y1){
+        
+    }
 }

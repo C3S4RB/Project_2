@@ -51,6 +51,9 @@ public class VistaExplorarController implements Initializable {
     private StackPane st;
     private Rover rover;
     private ImageView roverImg;
+    double ubicacionx;
+    double ubicaciony;
+
     private List<Rover> rovers=Nasa.getRovers();
     /**
      * Initializes the controller class.
@@ -164,7 +167,13 @@ public class VistaExplorarController implements Initializable {
             case "dirigirse":
                 comdIngresado.appendText("\n" + comando);
                 String[] xy = comand[1].split(",");
-                rover.dirigirse(Double.parseDouble(xy[0]), Double.parseDouble(xy[1]));
+                ubicacionx = Double.parseDouble(xy[0]);
+                ubicaciony = Double.parseDouble(xy[1]);
+                rover.dirigirse(ubicacionx, ubicaciony);
+                dirigirRunnable dr = new dirigirRunnable();
+                Thread th = new Thread(dr);
+                th.setDaemon(true);
+                th.start();
                 break;
             case "sensar":
                 comdIngresado.appendText("\n" + comando);
@@ -203,5 +212,20 @@ public class VistaExplorarController implements Initializable {
             
         }
     }*/
+    class dirigirRunnable implements Runnable {
 
+        @Override
+        public void run() {
+            try {
+                while(!rover.intersectaPunto(ubicacionx,ubicaciony)) {
+                    System.out.println(!rover.intersectaPunto(ubicacionx,ubicaciony));
+                    rover.avanzar();
+                    Thread.sleep(200);
+                }
+                
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }
