@@ -40,6 +40,8 @@ public class CraterData {
                 Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[3]), Double.valueOf(c[2]));
                 Crater crater = new Crater(c[0], c[1], ubicacion, Double.valueOf(c[4]));
                  Circle circle = new Circle(crater.getRadiocrater(), Color.RED);
+                 circle.setCenterX(Double.valueOf(c[2]));
+                  circle.setCenterY(Double.valueOf(c[3]));
                  circle.setStroke(Color.DARKRED);
                 crater.setCircle(circle);
                 crateres.add(crater);

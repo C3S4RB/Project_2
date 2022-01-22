@@ -18,7 +18,7 @@ public class Nasa {
 
     private static List<Crater> crateres;
     private List<String> minerales;
-    private List<Rover> rovers;
+    private static List<Rover> rovers;
     private List<Registro> registros;
 
     public Nasa() throws IOException {
@@ -37,7 +37,7 @@ public class Nasa {
         return crateres;
     }
 
-    public List<Rover> getRovers() {
+    public static List<Rover> getRovers() {
         return rovers;
     }
 

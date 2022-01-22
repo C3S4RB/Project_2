@@ -91,36 +91,31 @@ public abstract class Rover implements RoverI {
 
     @Override
     public void avanzar() {
-       
+
         double nUbicaciony = ubicacion.getLatitud();
         double nUbicacionx = ubicacion.getLongitud();
-       
-        double hpta=2 * Math.sqrt(delta);
-                      
+
+        double hpta = 2 * Math.sqrt(delta);
 
         double newY = hpta * Math.sin(Math.toRadians(imgv.getRotate()));
-        System.out.println(imgv.getRotate() + "Angle");
         double newX = hpta * Math.cos(Math.toRadians(imgv.getRotate()));
-        System.out.println(grados + "grados");
-        System.out.println(newY + "----" + newX);  //d*squart(2)
 
         if (newY == 0) {
 
             ubicacion.setLatitud(imgv.getLayoutY());
-            ubicacion.setLongitud(newX+nUbicacionx);
+            ubicacion.setLongitud(newX + nUbicacionx);
         } else if (newX == 0) {
-            ubicacion.setLatitud(newY+nUbicaciony);
+            ubicacion.setLatitud(newY + nUbicaciony);
             ubicacion.setLongitud(imgv.getLayoutX());
         } else {
-            
-            ubicacion.setLongitud(newX+nUbicacionx);
-            
-            ubicacion.setLatitud(newY+nUbicaciony);
-           // ubicacion.setLongitud(newX);
+
+            ubicacion.setLongitud(newX + nUbicacionx);
+
+            ubicacion.setLatitud(newY + nUbicaciony);
 
         }
 
-       imgv.setLayoutX(ubicacion.getLongitud());
+        imgv.setLayoutX(ubicacion.getLongitud());
         imgv.setLayoutY(ubicacion.getLatitud());
 
     }
@@ -136,35 +131,53 @@ public abstract class Rover implements RoverI {
     }
 
     public void dirigirse(double x, double y) {
+        double hpta = Ubicacion.calcularDistancia(x, ubicacion.getLongitud(), y, ubicacion.getLatitud());
+        double angulo = Math.acos((Math.abs(x - ubicacion.getLongitud())) / hpta);
+        if (x < ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
+            imgv.setRotate(Math.toDegrees(angulo) + 180);
+        } else if(x < ubicacion.getLongitud() && y > ubicacion.getLatitud()) {
+            imgv.setRotate(180-Math.toDegrees(angulo));
+        }else if(x < ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
+            imgv.setRotate(Math.toDegrees(angulo)+180);
+        }else if(x > ubicacion.getLongitud() && y < ubicacion.getLatitud()) {
+            imgv.setRotate(360-Math.toDegrees(angulo));
+        }else{
+        
+        }
+
+        System.out.println("x:" + String.valueOf(ubicacion.getLongitud()) + ".....y:" + String.valueOf(ubicacion.getLatitud()));
+
+        System.out.println(Math.toDegrees(angulo));
 
     }
 
     public void sensar() {
         LocalDate fecha = LocalDate.now();
-        //if(){
-
         List<String> minerales = MineralData.leerMineral();
         List<String> mnrl = new ArrayList<>();
         Random random = new Random();
 
-        //List<Crater> crateres = CraterData.leerCrateres();
         for (Crater c : Nasa.getCrateres()) {
-            System.out.println("AAAAA8");
 
-            if (imgv.intersects(c.getCircle().getLayoutBounds())) {
-                //  if (c.getCircle().intersects(imgv.getLayoutX(),imgv.getLayoutY(),imgv.getFitWidth(),imgv.getFitHeight())) {
-                System.out.println("AAAAAAAAAAAAAAAAAAa");
-
-                c.getCircle().setFill(Color.TRANSPARENT);
+            //if (imgv.intersects(c.getCircle().getBoundsInLocal())) {
+            //  if (imgv.intersects(c.getCircle().getCenterX(), c.getCircle().getCenterY(), c.getCircle().getRadius(),c.getCircle().getRadius())) {
+            // if (c.getCircle().intersects(imgv.boundsInLocalProperty().getValue())) {
+            if (interseccion(c)) {
+//  if(imgv.boundsInLocalProperty().getValue().intersects(c.getCircle().boundsInLocalProperty().getValue())){
+                //   System.out.println(imgv.getFitHeight()+"#"+imgv.getFitWidth
+                System.out.println(imgv.getImage().getWidth());
+                System.out.println("Rover:" + imgv.getLayoutX() + ":" + imgv.getLayoutX() + ":circle" + c.getCircle().getCenterX() + "" + c.getCircle().getCenterY() + "Radio:" + c.getCircle().getRadius());
+                System.out.println("LayoutX" + c.getCircle().getLayoutX() + "getX" + c.getCircle().getCenterX());
+                c.getCircle().setFill(Color.BLACK);
                 int cantidad = random.nextInt(minerales.size()) + 1;
                 for (int x = 0; x < cantidad; x++) {
                     mnrl.add(minerales.get(random.nextInt(minerales.size())));
                 }
 
                 try (BufferedWriter outputStream
-                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", false))) {
+                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
 
-                    outputStream.write(fecha + ";" + c.getNombrecrater() + ";" + mnrl);
+                    outputStream.write(fecha + ";" + c.getNombrecrater() + ";" + String.join(",", mnrl) + "\n");
                     //outputStream.newLine();
                 } catch (FileNotFoundException e) {
                     System.out.println("Error opening the file out.txt." + e.getMessage());
@@ -187,6 +200,16 @@ public abstract class Rover implements RoverI {
     @Override
     public String toString() {
         return "Rover{" + "nombre=" + nombreR + ", ubicacion=" + ubicacion + '}';
+    }
+
+    public boolean interseccion(Crater crater) {
+        if (Ubicacion.calcularDistancia(ubicacion, crater.getUbicacion()) <= crater.getRadiocrater()) {
+
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }

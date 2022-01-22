@@ -1,3 +1,2 @@
-2021-12-10;Mead;Aluminio
-2021-12-11;Beaker;Aluminio,Oro,Plata
-2021-12-12;Mead;Calcio,Titanio,Aluminio
+2022-01-21;Baker;Titanio,Fosforo,Magnesio,Sodio,Hierro,Sodio,Hierro,Titanio,Sodio
+2022-01-21;Potanina;Hierro,Hierro,Calcio

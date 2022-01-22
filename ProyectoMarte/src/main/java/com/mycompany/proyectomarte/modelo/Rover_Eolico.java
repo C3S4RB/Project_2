@@ -16,7 +16,10 @@ public class Rover_Eolico extends Rover {
     }
 
     public void cargar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    getImgv().setRotate(90);
+    
+    
     }
     //“despliegue de molinos” y el rover gira para ver hay el norte del planeta porque los vientos siempre giran de norte a sur.
 
