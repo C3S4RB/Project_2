@@ -23,7 +23,7 @@ public class CraterData {
     public static String ruta = CONSTANTES.ARCHIVOS + "crateres_info.txt";
     public static String ruta2 = CONSTANTES.ARCHIVOS + "registros.txt";
 
-    public static List<Crater> leerCrateres() {
+    public static List<Crater> cargarCrateres() {
         List<Crater> crateres = new ArrayList<>();
 
         try (BufferedReader bf
@@ -37,20 +37,17 @@ public class CraterData {
                 //double latitud, double longitud
                 String[] c = linea.split(",");
                 //c1 es el nombre del crater
-                Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[3]), Double.valueOf(c[2]));
-                Crater crater = new Crater(c[0], c[1], ubicacion, Double.valueOf(c[4]));
+                Ubicacion ubicacion = new Ubicacion(Double.valueOf(c[3].trim()), Double.valueOf(c[2].trim()));
+                Crater crater = new Crater(c[0].trim(), c[1].trim(), ubicacion, Double.valueOf(c[4].trim()));
                 Circle circle = new Circle(crater.getRadiocrater(), Color.RED);
-                circle.setCenterX(Double.valueOf(c[2]));
-                circle.setCenterY(Double.valueOf(c[3]));
-
+                circle.setCenterX(Double.valueOf(c[2].trim()));
+                circle.setCenterY(Double.valueOf(c[3].trim()));
                 crater.setCircle(circle);
                 crater.getCircle().setStroke(Color.DARKRED);
-
                 crateres.add(crater);
             }
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los crateres");
-            ex.printStackTrace();
         }
 
         listaSensados();
@@ -62,15 +59,11 @@ public class CraterData {
         for (Crater cra : crateres) {
             for (String craterSensado : crateresNSensado) {
 
-                if (cra.getNombrecrater().equals(craterSensado)) {
-                    System.out.println(craterSensado);
-                    cra.getCircle().setStroke(Color.TRANSPARENT);
-
+                if (cra.getNombrecrater().equals(craterSensado)) {                    
+                    cra.getCircle().setFill(Color.TRANSPARENT);
                 }
-
             }
             crateresF.add(cra);
-
         }
         return crateresF;
     }
@@ -86,7 +79,6 @@ public class CraterData {
 
                 if (!crateresNSensado.contains(craterSensado)) {
                     crateresNSensado.add(craterSensado);
-
                 }
             }
             return crateresNSensado;
@@ -96,7 +88,6 @@ public class CraterData {
             ex.printStackTrace();
         }
         return null;
-        
     }
 
 }

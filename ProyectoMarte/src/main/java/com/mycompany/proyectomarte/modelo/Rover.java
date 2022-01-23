@@ -158,7 +158,7 @@ public abstract class Rover implements RoverI {
 
     public void sensar() {
         LocalDate fecha = LocalDate.now();
-        List<String> minerales = MineralData.leerMineral();
+        List<String> minerales = MineralData.cargarMineral();
         List<String> mnrl = new ArrayList<>();
         Random random = new Random();
 

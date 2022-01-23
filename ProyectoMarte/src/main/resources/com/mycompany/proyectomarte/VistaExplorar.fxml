@@ -15,14 +15,14 @@
       <HBox spacing="5.0">
          <children>
             <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="690.0" prefWidth="980.0" stylesheets="@vistaexplorar.css" />
-            <VBox prefHeight="690.0" prefWidth="200.0" spacing="10.0">
+            <VBox prefHeight="690.0" prefWidth="215.0" spacing="10.0">
                <children>
                   <Label text="Escoger Rover:" />
                   <ComboBox fx:id="cbRover" onAction="#cargarRover" prefWidth="150.0" />
                   <Label prefHeight="18.0" prefWidth="116.0" text="Ingrese Comandos:" />
                   <TextField fx:id="comandoTxt" onAction="#recibirComando" />
                   <Label prefHeight="18.0" prefWidth="142.0" text="Comandos Ingresados:" />
-                  <TextArea fx:id="comdIngresado" />
+                  <TextArea fx:id="comdIngresado" prefHeight="399.0" prefWidth="195.0" />
                   <HBox alignment="CENTER">
                      <children>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />

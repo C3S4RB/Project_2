@@ -19,19 +19,17 @@ public class MineralData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "minerales.txt";
 
-    public static List<String> leerMineral() {
+    public static List<String> cargarMineral() {
         List<String> strMinerales = new ArrayList<>();
 
         try (BufferedReader bf
                 = new BufferedReader(new FileReader(ruta))) {
             String linea;
             while ((linea = bf.readLine()) != null) {
-                //Mineral mineral = new Mineral(linea);
-                strMinerales.add(linea);
+                strMinerales.add(linea.trim());
             }
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los minerales");
-            ex.printStackTrace();
         }
         return strMinerales;
     }

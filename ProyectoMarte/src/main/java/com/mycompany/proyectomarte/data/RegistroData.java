@@ -20,7 +20,7 @@ public class RegistroData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "registros.txt";
 
-    public static List<Registro> leerRegistros() {
+    public static List<Registro> cargarRegistros() {
         List<Registro> registros = new ArrayList<>();
         try (BufferedReader bf
                 = new BufferedReader(new FileReader(ruta))) {                        
@@ -29,16 +29,16 @@ public class RegistroData {
                 String[] l = linea.split(";");
 
                 //l[0] = año-mes-dia
-                String f = l[0];
+                String f = l[0].trim();
                 LocalDate fecha = LocalDate.parse(f);
 
                 //l[1] = Crater
-                String crater = l[1];
+                String crater = l[1].trim();
                 
                 //Lista de minerales
                 //l[2] = mineral1,mineral2,...,mineralN                                               
                 List<String> minerales = new ArrayList<>();
-                minerales.add(l[2]);
+                minerales.add(l[2].trim());
                 
                 //Constructor de registro
                 //Registro(LocalDate fecha, String crater, List<String> mineralesEncontrados)
@@ -47,7 +47,6 @@ public class RegistroData {
             }
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los registros");
-            ex.printStackTrace();
         }
         return registros;
     }

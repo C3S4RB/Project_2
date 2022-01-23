@@ -20,10 +20,9 @@ import java.util.List;
  */
 public class RoverData {
 
-
     public static String ruta = CONSTANTES.ARCHIVOS + "rovers.txt";
 
-    public static List<Rover> leerRovers() {
+    public static List<Rover> cargarRovers() {
         List<Rover> rovers = new ArrayList<>();
         try (BufferedReader bf
                 = new BufferedReader(new FileReader(ruta))) {
@@ -32,19 +31,16 @@ public class RoverData {
                 String[] p = linea.split(",");
 
                 if ((p[3]).equals("solar")) {
-                    
-                    
-                    Rover rover = new Rover_Panel(p[0],new Ubicacion (Double.parseDouble(p[1]), Double.parseDouble(p[2])));
+                    Rover rover = new Rover_Panel(p[0].trim(), new Ubicacion(Double.parseDouble(p[1].trim()), Double.parseDouble(p[2].trim())));
                     rovers.add(rover);
                 } else {
-                    Rover rover = new Rover_Eolico(p[0],new Ubicacion ( Double.parseDouble(p[1]), Double.parseDouble(p[2])));
+                    Rover rover = new Rover_Eolico(p[0].trim(), new Ubicacion(Double.parseDouble(p[1].trim()), Double.parseDouble(p[2].trim())));
                     rovers.add(rover);
                 }
             }
 
         } catch (IOException ex) {
             System.out.println("No se pudo cargar la informacion de los rovers");
-            ex.printStackTrace();
         }
         return rovers;
 

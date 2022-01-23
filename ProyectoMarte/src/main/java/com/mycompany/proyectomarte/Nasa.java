@@ -21,9 +21,9 @@ public class Nasa {
     private List<Registro> registros;
 
     public Nasa() throws IOException {
-        crateres = CraterData.leerCrateres();
-        rovers = RoverData.leerRovers();
-        minerales = MineralData.leerMineral();
+        crateres = CraterData.cargarCrateres();
+        rovers = RoverData.cargarRovers();
+        minerales = MineralData.cargarMineral();
 
         //registros = RegistroData.leerRegistros();
     }

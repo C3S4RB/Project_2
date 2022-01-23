@@ -142,7 +142,7 @@ public class VistaReporteController implements Initializable {
     }
 
     private void registrovalido(LocalDate fechaInicio, LocalDate fechaFin, String mineral) {
-        List<Registro> registro = RegistroData.leerRegistros();
+        List<Registro> registro = RegistroData.cargarRegistros();
         Collections.sort(registro);
         for (Registro r : registro) {
             if ((r.getFecha().isAfter(fechaInicio)) && (r.getFecha().isBefore(fechaFin)) || ((r.getFecha().isEqual(fechaInicio)) || r.getFecha().isEqual(fechaFin))) {

@@ -19,7 +19,7 @@ public class Validaciones {
 
     //Validar crater existe
     public static List<Crater> validarCrateres(String ingresados) {
-        List<Crater> crateres = CraterData.leerCrateres();
+        List<Crater> crateres = CraterData.cargarCrateres();
         List<String> nCrateres = new ArrayList<>();
         String[] nombresCrateres = ingresados.split(",");
         List<String> noCumplen = new ArrayList<>();
@@ -46,7 +46,7 @@ public class Validaciones {
 
     //Validamos que el mineral exista  
     public static boolean validarMineral(String txt) {
-        List<String> minerales = MineralData.leerMineral();
+        List<String> minerales = MineralData.cargarMineral();
         List<String> nombresMinerales = new ArrayList<>();
         for (String m : minerales) {
             nombresMinerales.add(capital(m));

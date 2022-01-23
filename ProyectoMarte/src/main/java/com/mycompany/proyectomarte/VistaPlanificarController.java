@@ -55,7 +55,7 @@ public class VistaPlanificarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<Rover> rovers = RoverData.leerRovers();
+        List<Rover> rovers = RoverData.cargarRovers();
         cbRovers.getItems().addAll(rovers);
 
         ruta = FXCollections.observableArrayList();
