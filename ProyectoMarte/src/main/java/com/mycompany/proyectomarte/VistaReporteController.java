@@ -131,6 +131,7 @@ public class VistaReporteController implements Initializable {
                         if (registros.isEmpty()) {
                             Validaciones.lanzarAlertaInfo("No existen regitros en ese intervalo de fechas.");
                         }
+                        //Si registros esta llena lo añada al tableView
                         tableView.setItems(registros);
                     }
                 }

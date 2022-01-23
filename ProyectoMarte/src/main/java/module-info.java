@@ -8,4 +8,7 @@ module com.mycompany.proyectomarte {
     
     opens com.mycompany.proyectomarte.modelo to javafx.fxml;
     exports com.mycompany.proyectomarte.modelo;
+    
+    opens com.mycompany.proyectomarte.data to javafx.fxml;
+    exports com.mycompany.proyectomarte.data;
 }

@@ -9,7 +9,6 @@ import com.mycompany.proyectomarte.data.CraterData;
 import com.mycompany.proyectomarte.data.MineralData;
 import com.mycompany.proyectomarte.data.RoverData;
 import com.mycompany.proyectomarte.modelo.Crater;
-
 import com.mycompany.proyectomarte.modelo.Rover;
 import java.io.IOException;
 import java.util.List;
