@@ -57,12 +57,9 @@ public class VistaExplorarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
         cbRover.getItems().addAll(rovers);
         List<Crater> crateresF = CraterData.pintar(CraterData.listaSensados(), Nasa.getCrateres());
         for (Crater crater : crateresF) {
-
             Label l = new Label(crater.getNombrecrater());
             l.setTextFill(Color.WHITE);
             st = new StackPane();

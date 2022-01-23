@@ -57,7 +57,6 @@ public class VistaPlanificarController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         List<Rover> rovers = RoverData.cargarRovers();
         cbRovers.getItems().addAll(rovers);
-
         ruta = FXCollections.observableArrayList();
         columnaRutaOptima.setCellValueFactory(new PropertyValueFactory<>("nombrecrater"));
     }

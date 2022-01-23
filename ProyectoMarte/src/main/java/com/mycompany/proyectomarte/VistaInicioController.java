@@ -37,7 +37,7 @@ public class VistaInicioController implements Initializable {
     @FXML
     private void explorarSuperficie(MouseEvent event) throws IOException {
         System.out.println("En explorar superficie");
-         Parent root = App.loadFXML("VistaExplorar");
+        Parent root = App.loadFXML("VistaExplorar");
         App.setRoot(root);
         actualizarPosicion();
     }
@@ -58,23 +58,21 @@ public class VistaInicioController implements Initializable {
 
     @FXML
     private void salir(MouseEvent event) {
-    //se termina la aplicacion
-    actualizarPosicion();
+        //se termina la aplicacion
+        actualizarPosicion();
         Platform.exit();
         
     }
     public void actualizarPosicion() {
         try (BufferedWriter outputStream
                 = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "rovers.txt", false))) {
-            // 
+            
             List<Rover> rovers = VistaExplorarController.getRovers();
             
-            for (Rover r : rovers) {
-              //  r.getImgv().setRotate(r.getImgv().getRotate());
+            for (Rover r : rovers) {            
                 double nx = r.getUbicacion().getLongitud();
                 double ny = r.getUbicacion().getLatitud();
-                outputStream.write(r.getNombreR() + "," + String.valueOf(ny) + "," + String.valueOf(nx) + "," + r.getTipo() + "\n");
-                
+                outputStream.write(r.getNombreR() + "," + String.valueOf(ny) + "," + String.valueOf(nx) + "," + r.getTipo() + "\n");                
             }
 
         } catch (FileNotFoundException e) {

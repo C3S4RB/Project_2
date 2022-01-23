@@ -52,12 +52,14 @@ public class VistaReporteController implements Initializable {
     private ObservableList<Registro> registros;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
+    private List<Registro> registro;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        registro = RegistroData.cargarRegistros();
         registros = FXCollections.observableArrayList();
         columnaFecha.setCellValueFactory(new PropertyValueFactory("fecha"));
         columnaNombreCrater.setCellValueFactory(new PropertyValueFactory("crater"));
@@ -68,9 +70,9 @@ public class VistaReporteController implements Initializable {
     private void buscar(MouseEvent event) {
         try {
             //obtenemos los textos            
-            String mineral = txtMineral.getText();
-            String fechaI = txtFechaIncio.getText();
-            String fechaF = txtFechaFin.getText();
+            String mineral = txtMineral.getText().trim();
+            String fechaI = txtFechaIncio.getText().trim();
+            String fechaF = txtFechaFin.getText().trim();
 
             //Validamos que los parametros esten llenos 
             //Si alguno de los textos estan vacios muestra una alerta            
@@ -131,7 +133,7 @@ public class VistaReporteController implements Initializable {
                         if (registros.isEmpty()) {
                             Validaciones.lanzarAlertaInfo("No existen regitros en ese intervalo de fechas.");
                         }
-                        //Si registros esta llena lo añada al tableView
+                        //Si registros esta lleno lo añade al tableView
                         tableView.setItems(registros);
                     }
                 }
@@ -141,8 +143,7 @@ public class VistaReporteController implements Initializable {
         }
     }
 
-    private void registrovalido(LocalDate fechaInicio, LocalDate fechaFin, String mineral) {
-        List<Registro> registro = RegistroData.cargarRegistros();
+    private void registrovalido(LocalDate fechaInicio, LocalDate fechaFin, String mineral) {        
         Collections.sort(registro);
         for (Registro r : registro) {
             if ((r.getFecha().isAfter(fechaInicio)) && (r.getFecha().isBefore(fechaFin)) || ((r.getFecha().isEqual(fechaInicio)) || r.getFecha().isEqual(fechaFin))) {
