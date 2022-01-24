@@ -4,10 +4,15 @@
  */
 package com.mycompany.proyectomarte;
 
-import com.mycompany.proyectomarte.data.CraterData;
+import com.mycompany.proyectomarte.data.CONSTANTES;
+import com.mycompany.proyectomarte.data.RoverData;
 import com.mycompany.proyectomarte.modelo.Crater;
 import com.mycompany.proyectomarte.modelo.Rover;
+import com.mycompany.proyectomarte.modelo.Rover_Eolico;
 import com.mycompany.proyectomarte.modelo.Validaciones;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -26,7 +31,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 
 /**
  * FXML Controller class
@@ -47,8 +51,7 @@ public class VistaExplorarController implements Initializable {
     private StackPane st;
     private Rover rover;
     private ImageView roverImg;
-    double ubicacionx;
-    double ubicaciony;
+    
 
     private static List<Rover> rovers = Nasa.getRovers();
 
@@ -57,11 +60,13 @@ public class VistaExplorarController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+
         cbRover.getItems().addAll(rovers);
-        List<Crater> crateresF = CraterData.pintar(CraterData.listaSensados(), Nasa.getCrateres());
-        for (Crater crater : crateresF) {
+
+        for (Crater crater : Nasa.getCrateres()) {
+
             Label l = new Label(crater.getNombrecrater());
-            l.setTextFill(Color.WHITE);
             st = new StackPane();
             double d = 2 * crater.getCircle().getRadius();
             if (panelExplorar.getPrefHeight() - d > crater.getUbicacion().getLongitud() && panelExplorar.getPrefWidth() - d > crater.getUbicacion().getLatitud()) {
@@ -70,8 +75,16 @@ public class VistaExplorarController implements Initializable {
                 st.setLayoutX(crater.getCircle().getCenterX());
                 st.setLayoutY(crater.getCircle().getCenterY());
             }
+
         }
+
     }
+
+    public static List<Rover> getRovers() {
+        return rovers;
+    }
+    
+    
 
     @FXML
     private void cargarRover(ActionEvent event) {
@@ -120,7 +133,11 @@ public class VistaExplorarController implements Initializable {
                     System.out.println("Error opening the file out.txt." + e.getMessage());
                 } catch (IOException e) {
                     System.out.println("IOException." + e.getMessage());
-                }        
+                }
+    
+         
+         
+         
          }
         
         
@@ -132,7 +149,7 @@ public class VistaExplorarController implements Initializable {
 
     @FXML
     private void recibirComando(ActionEvent event) {
-        String comando = comandoTxt.getText().trim().toLowerCase();
+        String comando = comandoTxt.getText().replace(" ", "").toLowerCase();
         String[] comand = comando.split(":");
         switch (comand[0]) {
             case "avanzar":
@@ -153,14 +170,11 @@ public class VistaExplorarController implements Initializable {
             case "dirigirse":
                 comdIngresado.appendText("\n" + comando);
                 String[] xy = comand[1].split(",");
-                ubicacionx = Double.parseDouble(xy[0]);
-                ubicaciony = Double.parseDouble(xy[1]);
+                rover.setUbicacionx(Double.parseDouble(xy[0]));
+                rover.setUbicaciony(Double.parseDouble(xy[1]));
 
-                rover.dirigirse(ubicacionx, ubicaciony);
-                dirigirRunnable dr = new dirigirRunnable();
-                Thread th = new Thread(dr);
-                th.setDaemon(true);
-                th.start();
+                rover.dirigirse(rover.getUbicacionx(), rover.getUbicaciony());
+
                 break;
             case "sensar":
                 comdIngresado.appendText("\n" + comando);
@@ -168,7 +182,9 @@ public class VistaExplorarController implements Initializable {
                 break;
             case "cargar":
                 comdIngresado.appendText("\n" + comando);
+
                 rover.cargar();
+
                 break;
             default:
                 Validaciones.lanzarAlerta("No existe comando");
@@ -200,44 +216,4 @@ public class VistaExplorarController implements Initializable {
             
         }
     }*/
-    public static List<Rover> getRovers() {
-        return rovers;
-    }
-
-    class dirigirRunnable implements Runnable {
-
-        @Override
-        public void run() {
-            try {
-                if (ubicacionx > rover.getUbicacion().getLatitud() && ubicaciony > rover.getUbicacion().getLatitud()) {
-                    while (!rover.intersectaPunto(ubicacionx, ubicaciony)) {
-                        System.out.println(!rover.intersectaPunto(ubicacionx, ubicaciony));
-                        rover.avanzar();
-                        Thread.sleep(50);
-                    }
-                } else if (ubicacionx < rover.getUbicacion().getLatitud() && ubicaciony > rover.getUbicacion().getLatitud()) {
-                    while (!rover.intersectaPunto1(ubicacionx, ubicaciony)) {
-                        System.out.println(!rover.intersectaPunto1(ubicacionx, ubicaciony));
-                        rover.avanzar();
-                        Thread.sleep(50);
-                    }
-                } else if (ubicacionx < rover.getUbicacion().getLatitud() && ubicaciony < rover.getUbicacion().getLatitud()) {
-                    while (!rover.intersectaPunto2(ubicacionx, ubicaciony)) {
-                        System.out.println(!rover.intersectaPunto2(ubicacionx, ubicaciony));
-                        rover.avanzar();
-                        Thread.sleep(50);
-                    }
-                } else if (ubicacionx > rover.getUbicacion().getLatitud() && ubicaciony < rover.getUbicacion().getLatitud()) {
-                    while (!rover.intersectaPunto3(ubicacionx, ubicaciony)) {
-                        System.out.println(!rover.intersectaPunto3(ubicacionx, ubicaciony));
-                        rover.avanzar();
-                        Thread.sleep(50);
-                    }
-                }
-
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
 }

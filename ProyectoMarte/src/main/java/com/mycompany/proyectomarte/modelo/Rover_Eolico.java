@@ -16,13 +16,10 @@ public class Rover_Eolico extends Rover {
         super.setTipo("eolico");
     }
 
+    @Override
     public void cargar() {
-        
-    getImgv().setRotate(90);
-    
-    
+        getImgv().setRotate(270);
     }
-    
     //“despliegue de molinos” y el rover gira para ver hay el norte del planeta porque los vientos siempre giran de norte a sur.
 
 }
