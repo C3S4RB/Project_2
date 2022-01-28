@@ -12,3 +12,6 @@
 2022-01-22;Baker;Fosforo,Silicio,Potasio,Silicio,Silicio,Sodio
 2022-01-22;Potanina;Fosforo,Sodio,Aluminio,Calcio,Sodio,Magnesio
 2022-01-23;Joliot-Curie;Titanio,Sodio,Calcio,Sodio,Hierro
+2022-01-23;Seymour;Fosforo
+2022-01-23;Gautier;Silicio
+2022-01-23;Greenaway;Magnesio,Aluminio,Hierro,Titanio,Aluminio,Sodio

@@ -31,17 +31,7 @@ public abstract class Rover implements RoverI {
     private ImageView imgv;
     private static double delta = 50;
     private String urlImagen;
-    private double ubicacionx;
-    private double ubicaciony;
     private String tipo;
-    
- 
-
-    public Rover(String nombreR, Ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
-        this.nombreR = nombreR;
-
-    }
 
     public String getTipo() {
         return tipo;
@@ -50,8 +40,12 @@ public abstract class Rover implements RoverI {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    
+
+    public Rover(String nombreR, Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
+        this.nombreR = nombreR;
+
+    }
 
     public double getRadioRover() {
         return radioRover;
@@ -83,24 +77,6 @@ public abstract class Rover implements RoverI {
         return ubicacion;
 
     }
-
-    public double getUbicacionx() {
-        return ubicacionx;
-    }
-
-    public void setUbicacionx(double ubicacionx) {
-        this.ubicacionx = ubicacionx;
-    }
-
-    public double getUbicaciony() {
-        return ubicaciony;
-    }
-
-    public void setUbicaciony(double ubicaciony) {
-        this.ubicaciony = ubicaciony;
-    }
-    
-    
 
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
@@ -141,11 +117,8 @@ public abstract class Rover implements RoverI {
             ubicacion.setLatitud(newY + nUbicaciony);
             ubicacion.setLongitud(imgv.getLayoutX());
         } else {
-
             ubicacion.setLongitud(newX + nUbicacionx);
-
             ubicacion.setLatitud(newY + nUbicaciony);
-
         }
 
         imgv.setLayoutX(ubicacion.getLongitud());
@@ -179,12 +152,6 @@ public abstract class Rover implements RoverI {
             imgv.setRotate(Math.toDegrees(angulo));
         }
 
-        dirigirRunnable dr = new dirigirRunnable();
-        Thread th = new Thread(dr);
-        th.setDaemon(true);
-        th.start();
-        
-
         //System.out.println("x:" + String.valueOf(ubicacion.getLongitud()) + ".....y:" + String.valueOf(ubicacion.getLatitud()));
         //System.out.println(Math.toDegrees(angulo));
     }
@@ -211,12 +178,10 @@ public abstract class Rover implements RoverI {
                 for (int x = 0; x < cantidad; x++) {
                     mnrl.add(minerales.get(random.nextInt(minerales.size())));
                 }
-
                 try (BufferedWriter outputStream
-                        = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
-
+                        = new BufferedWriter(
+                                new FileWriter(CONSTANTES.ARCHIVOS + "registros.txt", true))) {
                     outputStream.write(fecha + ";" + c.getNombrecrater() + ";" + String.join(",", mnrl) + "\n");
-                    //outputStream.newLine();
                 } catch (FileNotFoundException e) {
                     System.out.println("Error opening the file out.txt." + e.getMessage());
                 } catch (IOException e) {
@@ -254,7 +219,7 @@ public abstract class Rover implements RoverI {
         }
         return false;
     }
-
+    
     public boolean intersectaPunto1(double x1, double y1) {
         if (x1 >= ubicacion.getLongitud() && y1 <= ubicacion.getLatitud()) {
             return true;
@@ -262,7 +227,7 @@ public abstract class Rover implements RoverI {
             return false;
         }
     }
-
+    
     public boolean intersectaPunto2(double x1, double y1) {
         if (x1 >= ubicacion.getLongitud() && y1 >= ubicacion.getLatitud()) {
             return true;
@@ -270,7 +235,7 @@ public abstract class Rover implements RoverI {
             return false;
         }
     }
-
+    
     public boolean intersectaPunto3(double x1, double y1) {
         if (x1 <= ubicacion.getLongitud() && y1 >= ubicacion.getLatitud()) {
             return true;
@@ -278,42 +243,4 @@ public abstract class Rover implements RoverI {
             return false;
         }
     }
-
-    class dirigirRunnable implements Runnable {
-
-        @Override
-        public void run() {
-            try {
-                if (ubicacionx > getUbicacion().getLatitud() && ubicaciony > getUbicacion().getLatitud()) {
-                    while (!intersectaPunto(ubicacionx, ubicaciony)) {
-                        avanzar();
-                        
-                        Thread.sleep(500);
-                    }
-                } else if (ubicacionx < getUbicacion().getLatitud() && ubicaciony > getUbicacion().getLatitud()) {
-                    while (!intersectaPunto1(ubicacionx, ubicaciony)) {
-                        avanzar();
-                        
-                        Thread.sleep(500);
-                    }
-                } else if (ubicacionx < getUbicacion().getLatitud() && ubicaciony < getUbicacion().getLatitud()) {
-                    while (!intersectaPunto2(ubicacionx, ubicaciony)) {
-                        avanzar();
-                        
-                        Thread.sleep(500);
-                    }
-                } else if (ubicacionx > getUbicacion().getLatitud() && ubicaciony < getUbicacion().getLatitud()) {
-                    while (!intersectaPunto3(ubicacionx, ubicaciony)) {
-                        avanzar();
-                        
-                        Thread.sleep(500);
-                    }
-                }
-
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
 }
