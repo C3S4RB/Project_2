@@ -1,0 +1,14 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+ 
+#panelRover{
+        
+        -fx-background-image:url("rover.jpg");
+        -fx-background-size:100% 100%;
+        -fx-rotate:0   ;
+        
+      
+           }
