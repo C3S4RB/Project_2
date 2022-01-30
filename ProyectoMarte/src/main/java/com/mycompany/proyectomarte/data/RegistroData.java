@@ -19,7 +19,10 @@ import java.util.List;
 public class RegistroData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "registros.txt";
-
+    /**
+     * 
+     * @return 
+     */
     public static List<Registro> cargarRegistros() {
         List<Registro> registros = new ArrayList<>();
         try (BufferedReader bf

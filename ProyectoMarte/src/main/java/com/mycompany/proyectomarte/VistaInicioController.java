@@ -33,7 +33,12 @@ public class VistaInicioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
+    /**
+     * 
+     * @param event evento del tipo mouseClicked
+     * @throws IOException 
+     */
     @FXML
     private void explorarSuperficie(MouseEvent event) throws IOException {
        ;
@@ -41,21 +46,34 @@ public class VistaInicioController implements Initializable {
         App.setRoot(root);
         actualizarPosicion();
     }
-
+    
+    /**
+     * 
+     * @param event evento del tipo mouseClicked
+     * @throws IOException lanza una excepcion de tipo IOException
+     */
     @FXML
     private void planificarExploracion(MouseEvent event) throws IOException {
         System.out.println("En planificar exploracion");
         Parent root = App.loadFXML("VistaPlanificar");
         App.setRoot(root);
     }
-
+    /**
+     * 
+     * @param event evento del tipo mouseClicked
+     * @throws IOException lanza una excepcion de tipo IOException 
+     */
     @FXML
     private void verReporte(MouseEvent event) throws IOException {
         System.out.println("En ver reporte");
         Parent root = App.loadFXML("VistaReporte");
         App.setRoot(root);
     }
-
+    
+    /**
+     * 
+     * @param event evento del tipo mouseClicked
+     */
     @FXML
     private void salir(MouseEvent event) {
         //se termina la aplicacion
@@ -63,6 +81,9 @@ public class VistaInicioController implements Initializable {
         Platform.exit();
         
     }
+    /**
+     * 
+     */
     public void actualizarPosicion() {
         try (BufferedWriter outputStream
                 = new BufferedWriter(new FileWriter(CONSTANTES.ARCHIVOS + "rovers.txt", false))) {

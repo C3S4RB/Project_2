@@ -27,7 +27,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 /**
- * FXML Controller class
+ * FXML Controller class 
+ * Representa el controlador del fxml VistaPlanificar.fxml  en la cual se planifica la ruta optima
  *
  * @author kevin
  */
@@ -55,7 +56,7 @@ public class VistaPlanificarController implements Initializable {
     Rover rover2;
     
     /**
-     * Initializes the controller class.
+     * Initializes the controller class 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,11 +70,20 @@ public class VistaPlanificarController implements Initializable {
         
         
     }
-
+    /**
+     * 
+     * @param craterEtiquetador crater con la menor distancia
+     */
     public void rutasOptimas(Crater craterEtiquetador) {
         rutaOptima.add(craterEtiquetador);
     }
-
+    
+    /**
+     * 
+     * @param crateresCumplen lista de crateres validados
+     * @param roverExplorar es el rover que selecciona el usuario
+     * @return 
+     */
     public Crater darEtiquetaUbicacionMenor(List<Crater> crateresCumplen, Rover roverExplorar) {
 
         for (Crater c : crateresCumplen) {
@@ -87,7 +97,11 @@ public class VistaPlanificarController implements Initializable {
         roverExplorar.setUbicacion(craterMenor.getUbicacion());
         return craterMenor;
     }
-
+    
+    /**
+     * 
+     * @param event 
+     */
     @FXML
     private void mostarRuta(MouseEvent event) {
         
@@ -135,7 +149,11 @@ public class VistaPlanificarController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-
+    
+    /**
+     * 
+     * @param event 
+     */
     @FXML
     private void regresar(MouseEvent event) {
         //redirigir a la ventana inicio

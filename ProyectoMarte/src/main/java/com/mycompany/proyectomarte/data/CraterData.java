@@ -18,11 +18,16 @@ import javafx.scene.shape.Circle;
  *
  * @author Ramses
  */
+
 public class CraterData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "crateres_info.txt";
     public static String ruta2 = CONSTANTES.ARCHIVOS + "registros.txt";
-
+    
+    /**
+     * 
+     * @return 
+     */
     public static List<Crater> cargarCrateres() {
         List<Crater> crateres = new ArrayList<>();
 
@@ -53,7 +58,12 @@ public class CraterData {
         listaSensados();
         return crateres;
     }
-
+    /**
+     * 
+     * @param crateresNSensado una lista de string de los crateres sensado
+     * @param crateres son los crateres del txt crater.info
+     * @return 
+     */
     public static List<Crater> pintar(List<String> crateresNSensado, List<Crater> crateres) {
         List<Crater> crateresF = new ArrayList<>();
         for (Crater cra : crateres) {
@@ -67,7 +77,11 @@ public class CraterData {
         }
         return crateresF;
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public static List<String> listaSensados() {
         try (BufferedReader bfCRegistro
                 = new BufferedReader(new FileReader(ruta2))) {

@@ -22,7 +22,11 @@ public class RoverData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "rovers.txt";
     public static String ruta1 = CONSTANTES.ARCHIVOS + "posiciones.txt";
-
+    
+    /**
+     * 
+     * @return 
+     */
     public static List<Rover> cargarRovers() {
 
         List<Rover> rovers = new ArrayList<>();

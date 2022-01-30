@@ -65,7 +65,11 @@ public class VistaReporteController implements Initializable {
         columnaNombreCrater.setCellValueFactory(new PropertyValueFactory("crater"));
         columnaMinerales.setCellValueFactory(new PropertyValueFactory("mineralesE"));
     }
-
+    
+    /**
+     * 
+     * @param event evento del tipo mouseClicked 
+     */
     @FXML
     private void buscar(MouseEvent event) {
         try {
@@ -142,7 +146,13 @@ public class VistaReporteController implements Initializable {
             Validaciones.lanzarAlerta("El contenido no puede estar vacio.");
         }
     }
-
+    
+    /**
+     * 
+     * @param fechaInicio es la fecha de inicio que ingresa el usuario 
+     * @param fechaFin es la fecha fin que ingresa el usuario 
+     * @param mineral son los minerales que ingresa el usuario
+     */
     private void registrovalido(LocalDate fechaInicio, LocalDate fechaFin, String mineral) {        
         Collections.sort(registro);
         for (Registro r : registro) {
@@ -159,7 +169,10 @@ public class VistaReporteController implements Initializable {
             }
         }
     }
-
+    /**
+     * 
+     * @param event evento del tipo mouseClickedevento del tipo mouseClicked
+     */
     @FXML
     private void regresar(MouseEvent event) {
         //redirigir a la ventana inicio

@@ -9,6 +9,10 @@ package com.mycompany.proyectomarte;
  * @author Ramses
  */
 public class Inicio {
+    /**
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         App.main(args);
     }

@@ -14,11 +14,15 @@ import java.util.List;
  *
  * @author cebor
  */
-///Hice esta h*-$# pa hacer colision dentro de cada crater 
+
 public class MineralData {
 
     public static String ruta = CONSTANTES.ARCHIVOS + "minerales.txt";
-
+    
+    /**
+     * 
+     * @return 
+     */
     public static List<String> cargarMineral() {
         List<String> strMinerales = new ArrayList<>();
 

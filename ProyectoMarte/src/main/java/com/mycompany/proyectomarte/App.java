@@ -22,13 +22,20 @@ public class App extends Application {
     private List<Crater> crateres;
     private List<Rover> rovers;
     private List<String> minerales;
-
+    
+    /**
+     * 
+     * @throws IOException lanza una excepcion de tipo IOException
+     */
     public void init() throws IOException {
         nasa = new Nasa();
     }
-
+    /**
+     * 
+     * @param stage es la ventana 
+     * @throws IOException lanza una excepcion de tipo IOException
+     */
     @Override
-    //55555555
     public void start(Stage stage) throws IOException {
         Parent vista = loadFXML("VistaInicio");
 
@@ -40,20 +47,36 @@ public class App extends Application {
         stage.show();
     }
 
-
+    /**
+     * 
+     * @param root el nuevo contenedor
+     */
     public static void setRoot(Parent root) {
         scene.setRoot(root);
     }
-
+    
+    /**
+     * 
+     * @param fxml es el nombre del archivo fxml
+     * @return
+     * @throws IOException lanza una excepcion de tipo IOException
+     */
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-
+    
+    /**
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         launch();
     }
-
+    /**
+     * 
+     * @return 
+     */
     public static Nasa getNasa() {
         return nasa;
     }

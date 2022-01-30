@@ -6,9 +6,10 @@
 package com.mycompany.proyectomarte.data;
 
 /**
- *
- * @author rocio
+ * 
+ * @author kevin
  */
+
 public abstract class CONSTANTES {
     public static final String ARCHIVOS = "datos/";
 }
