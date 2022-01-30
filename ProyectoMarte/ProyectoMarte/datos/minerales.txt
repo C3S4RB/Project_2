@@ -1,9 +1,0 @@
-Silicio
-Hierro
-Aluminio
-Calcio
-Titanio
-Fosforo
-Magnesio
-Sodio
-Potasio
