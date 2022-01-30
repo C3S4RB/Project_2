@@ -171,7 +171,7 @@ public class VistaReporteController implements Initializable {
     }
     /**
      * 
-     * @param event evento del tipo mouseClickedevento del tipo mouseClicked
+     * @param event evento del tipo mouseClicked
      */
     @FXML
     private void regresar(MouseEvent event) {

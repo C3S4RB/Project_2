@@ -100,7 +100,7 @@ public class VistaPlanificarController implements Initializable {
     
     /**
      * 
-     * @param event 
+     * @param event evento del tipo mouseClicked
      */
     @FXML
     private void mostarRuta(MouseEvent event) {
@@ -152,7 +152,7 @@ public class VistaPlanificarController implements Initializable {
     
     /**
      * 
-     * @param event 
+     * @param event evento del tipo mouseClicked
      */
     @FXML
     private void regresar(MouseEvent event) {
