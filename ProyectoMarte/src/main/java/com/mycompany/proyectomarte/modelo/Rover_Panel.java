@@ -7,6 +7,7 @@ package com.mycompany.proyectomarte.modelo;
 /**
  *
  * @author isaac
+ * Rover Panel extiende de Rover
  */
 public class Rover_Panel extends Rover {
 
@@ -16,6 +17,10 @@ public class Rover_Panel extends Rover {
         super.setTipo("solar");
     }
 
+    /**
+     *Método cargar de la clase Rover_Panel  se encarga de recargar la bateria del rover
+     */
+    @Override
     public void cargar() {
         setUbicacionx(100);
         setUbicaciony(100);

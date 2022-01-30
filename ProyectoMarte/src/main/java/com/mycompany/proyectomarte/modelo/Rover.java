@@ -28,7 +28,7 @@ public abstract class Rover implements RoverI {
     private Ubicacion ubicacion;
     private double grados;
     private String nombreR;
-    private double radioRover = 50;
+ 
     private ImageView imgv;
     private static double delta = 50;
     private String urlImagen;
@@ -38,9 +38,9 @@ public abstract class Rover implements RoverI {
     private int bateria = 100;
 
     /**
-     *
+     * a
      * @param nombreR
-     * @param ubicacion
+     * @param ubicacion 
      */
     public Rover(String nombreR, Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
@@ -48,99 +48,147 @@ public abstract class Rover implements RoverI {
     }
 
     /**
-     *
+     *retorna la bateria del rover
      * @return
      */
     public int getBateria() {
         return bateria;
     }
-
+  /**
+   * actualiza la bateria del rover
+   * @param bateria recibe un int 
+   */
     public void setBateria(int bateria) {
         this.bateria = bateria;
     }
 
-    /**
-     *
-     * @param nombreR
-     * @param ubicacion
-     */
+ /**
+  * retorna el tipo de rover
+  * @return 
+  */
     public String getTipo() {
         return tipo;
     }
-
+/**
+ * ingresa el tipo de Rover
+ * @param tipo recibe un String
+ */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public double getRadioRover() {
-        return radioRover;
-    }
-
+/**
+ * 
+ * @return imageview del rover
+ */
     public ImageView getImgv() {
         return imgv;
     }
-
+/**
+ * 
+ * @param imgv recibe imageview del rover
+ */
     public void setImgv(ImageView imgv) {
         this.imgv = imgv;
     }
 
-    public void setRadioRover(double radioRover) {
-        this.radioRover = radioRover;
-    }
-
+/**
+ * 
+ * @return String  dirección de la imagen 
+ */
     public String getUrlImagen() {
         return urlImagen;
     }
-
+/**
+ * 
+ * @param urlImagen direccion  de la imagen 
+ */
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
     }
-
+/**
+ * 
+ * @return toString definido para la clase Rover
+ */
     @Override
     public String toString() {
         return "Rover{" + "nombre=" + nombreR + ", ubicacion=" + ubicacion + '}';
     }
-
+/**
+ * 
+ * @return Ubicacion del rover 
+ */
     public Ubicacion getUbicacion() {
         return ubicacion;
 
     }
-
+/**
+ * 
+ * @return  retorna ubicacion al punto de llegada 
+ */
     public double getUbicacionx() {
         return ubicacionx;
     }
-
+/**
+ * 
+ * @param ubicacionx  ubicacion en x del punto de llegada
+ */
     public void setUbicacionx(double ubicacionx) {
         this.ubicacionx = ubicacionx;
     }
+    
+    /**
+     * 
+     * @return ubicacion en y del punto de llegada
+     */
 
     public double getUbicaciony() {
         return ubicaciony;
     }
-
+/**
+ * 
+ * @param ubicaciony 
+ */
     public void setUbicaciony(double ubicaciony) {
         this.ubicaciony = ubicaciony;
     }
-
+/**
+ * Actualiza la ubicacion del rover
+ * @param ubicacion 
+ */
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
     }
-
+/**
+ * ángulo actual del rover
+ * @return 
+ */
     public Double getGrados() {
         return grados;
     }
-
+/**
+ * 
+ * @param grados 
+ */
     public void setGrados(Double grados) {
         this.grados = grados;
     }
+    /**
+     * 
+     * @return nombre del Rover 
+     */
 
     public String getNombreR() {
         return nombreR;
     }
-
+/**
+ *  Da nombre al Rover
+ * @param nombreR 
+ */
     public void setNombreR(String nombreR) {
         this.nombreR = nombreR;
     }
+
 
     @Override
     public void avanzar() {
@@ -177,6 +225,7 @@ public abstract class Rover implements RoverI {
 
     }
 
+    @Override
     public void girar(double n) {
         imgv.setRotate(n);
         grados = n;
@@ -184,7 +233,11 @@ public abstract class Rover implements RoverI {
         ubicacion.setLongitud(imgv.getLayoutX());
 
     }
-
+    /**
+     * 
+     * @param x ubicacion x de llegada
+     * @param y ubicacion y  de llegada
+     */
     public void dirigirse(double x, double y) {
         double hpta = Ubicacion.calcularDistancia(x, ubicacion.getLongitud(), y, ubicacion.getLatitud());
         double angulo = Math.acos((Math.abs(x - ubicacion.getLongitud())) / hpta);
@@ -207,7 +260,9 @@ public abstract class Rover implements RoverI {
         th.start();
 
     }
-
+/**
+ * Sensa crateres
+ */
     public void sensar() {
         LocalDate fecha = LocalDate.now();
         List<String> minerales = MineralData.cargarMineral();
@@ -239,7 +294,9 @@ public abstract class Rover implements RoverI {
         }
 
     }
-
+/**
+ * Indica si el rover esta a punto de descargarse
+ */
     public void descargar() {
         boolean cd = true;
         System.out.println(getBateria() + "%");
@@ -251,7 +308,11 @@ public abstract class Rover implements RoverI {
         }
 
     }
-
+/**
+ * 
+ * @param crater Recibe un crater 
+ * @return boolean
+ */
     public boolean interseccion(Crater crater) {
         if (Ubicacion.calcularDistancia(ubicacion, crater.getUbicacion()) <= crater.getRadiocrater()) {
             return true;
@@ -259,7 +320,9 @@ public abstract class Rover implements RoverI {
             return false;
         }
     }
-
+/**
+ * clase dirigirRunnable implementa de la clase Runnable 
+ */
     class dirigirRunnable implements Runnable {
 
         @Override

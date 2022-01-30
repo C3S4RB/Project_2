@@ -7,6 +7,8 @@ package com.mycompany.proyectomarte.modelo;
 /**
  *
  * @author isaac
+ * 
+ * Rover Eolico extiende de Rover
  */
 public class Rover_Eolico extends Rover {
 
@@ -16,6 +18,10 @@ public class Rover_Eolico extends Rover {
         super.setTipo("eolico");
     }
 
+    /**
+     *Método cargar de la clase Rover_Panel  se encarga de recargar la bateria del rover
+     */
+    @Override
     public void cargar() {
         if (getBateria() != 100) {
             getImgv().setRotate(270);

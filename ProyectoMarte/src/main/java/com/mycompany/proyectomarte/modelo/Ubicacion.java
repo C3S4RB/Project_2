@@ -53,7 +53,5 @@ public class Ubicacion {
         return "Ubicacion{" + "latitud = " + latitud + ", longitud = " + longitud + '}';
     }
 
-    public String toCSV() {
-        return getLatitud() + "," + getLongitud();
-    }
+
 }
