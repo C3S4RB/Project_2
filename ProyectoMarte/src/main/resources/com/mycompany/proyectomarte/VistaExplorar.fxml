@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="690.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyectomarte.VistaExplorarController">
+   <children>
+      <HBox spacing="5.0">
+         <children>
+            <Pane id="panelExplorar" fx:id="panelExplorar" prefHeight="690.0" prefWidth="980.0" stylesheets="@vistaexplorar.css" />
+            <VBox prefHeight="690.0" prefWidth="215.0" spacing="10.0">
+               <children>
+                  <Label text="Escoger Rover:" />
+                  <ComboBox fx:id="cbRover" onAction="#cargarRover" prefWidth="150.0" />
+                  <Label prefHeight="18.0" prefWidth="116.0" text="Ingrese Comandos:" />
+                  <TextField fx:id="comandoTxt" onAction="#recibirComando" />
+                  <Label prefHeight="18.0" prefWidth="142.0" text="Comandos Ingresados:" />
+                  <TextArea fx:id="comdIngresado" prefHeight="399.0" prefWidth="195.0" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#regresar" text="Regresar" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
