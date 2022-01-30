@@ -56,6 +56,11 @@ public class VistaExplorarController implements Initializable {
     }
 
     /**
+     * 
+     * En el método initialize de FMXL en la vista explorar añade los rovers que podemos escoger
+     * en el combo box de rover cbRover, también añade las ubicaciones de los cráteres con sus radios
+     * y crea un StackPane de los círculos.
+     * 
      * Initializes the controller class.
      */
     @Override
@@ -74,6 +79,13 @@ public class VistaExplorarController implements Initializable {
 
         }
     }
+    
+    /**
+     * Este método inicializa el rover del combo box que escogió el usuario
+     * y muestra en la pantalla el img la imagen del rover ingresado.
+     * 
+     * @param event 
+     */
 
     @FXML
     private void cargarRover(ActionEvent event) {
@@ -97,6 +109,13 @@ public class VistaExplorarController implements Initializable {
         panelExplorar.getChildren().add(roverImg);
         rover.setImgv(roverImg);
     }
+    
+    /**
+     * En este método se verifica lo ingresado en el text field de vista explorar
+     * y lo ingresa a un switch en dónde realiza el comando de Rover ingresado por el ususario
+     * 
+     * @param event 
+     */
 
     @FXML
     private void recibirComando(ActionEvent event) {
@@ -157,7 +176,12 @@ public class VistaExplorarController implements Initializable {
         }
 
     }
-
+    
+    /**
+     * Regresa a la vista inicio del programa
+     * @param event 
+     */
+    
     @FXML
     private void regresar(MouseEvent event) {
         Parent root;
@@ -168,6 +192,13 @@ public class VistaExplorarController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Limites es un método que valida si el rover se encuentra o no en el borde de la zaona de esplorar
+     * y devuelve un valor booleano y añade un giro al imgv del rover.
+     * 
+     * @return 
+     */
 
     private boolean limites() {
         double y = rover.getImgv().getLayoutY();

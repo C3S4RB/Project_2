@@ -22,6 +22,14 @@ public class Crater {
     private double radiocrater;
 
     private Circle circle;
+    
+    /**
+     * Constructor de los cráteres con los siguientes parametros;
+     * @param idcrater
+     * @param nombrecrater
+     * @param ubicacion
+     * @param radiocrater 
+     */
 
     public Crater(String idcrater, String nombrecrater, Ubicacion ubicacion, double radiocrater) {
         this.idcrater = idcrater;
