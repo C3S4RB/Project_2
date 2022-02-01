@@ -138,8 +138,10 @@ public class VistaExplorarController implements Initializable {
             case "girar":
                 try {
                     comdIngresado.appendText("\n" + comando);
-                    rover.girar(Double.parseDouble(comand[1]) + rover.getImgv().getRotate());
-                } catch (NumberFormatException e) {
+                    double x=Double.parseDouble(comand[1]);
+                    double y= rover.getImgv().getRotate();
+                    rover.girar( x+y);
+                } catch (NumberFormatException | NullPointerException   | IndexOutOfBoundsException e) {
                     Validaciones.lanzarAlerta("El dato ingresado no es un dígito");
                 }
             break;
@@ -157,7 +159,7 @@ public class VistaExplorarController implements Initializable {
                     } else {
                         Validaciones.lanzarAlertaInfo("Batería baja: " + rover.getBateria() + "%" + "\nCargar batería urgente!!!");
                     }
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException | NullPointerException  | IndexOutOfBoundsException e) {
                     Validaciones.lanzarAlerta("El dato ingresado no es un dígito");
                 }
 
